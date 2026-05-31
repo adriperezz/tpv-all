@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QUANTIA — Brand & Style Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   QUANTIA — DESIGN SYSTEM / BRAND STYLE GUIDE
+   Versión: 2.0 — con soporte completo Light & Dark Mode
+   Empresa: Quantia, Ingeniería y Consultoría
+   ============================================================ */
+
+/* ============================================================
+   ── TOKENS RAW ─────────────────────────────────────
+   Paleta de marca fija (nunca cambia entre modos).
+   Estos son los valores brutos de los colores corporativos.
+   ============================================================ */
+:root {
+  /* Colores corporativos — RAW (marca, no cambian entre modos) */
+  --q-purple:       #5B4FF0;
+  --q-purple-dark:  #3B30C0;
+  --q-purple-deeper:#251D9A;
+  --q-purple-light: #EAE8FD;
+  --q-purple-mid:   #9B91F5;
+
+  --q-lime:         #C2E53A;
+  --q-lime-dark:    #9AB82A;
+  --q-lime-light:   #EEF6CC;
+  --q-lime-mid:     #D9EE79;
+
+  --q-black:        #0D0D0D;
+  --q-black-soft:   #1A1A1A;
+  --q-black-muted:  #2E2E2E;
+  --q-gray-dark:    #444444;
+  --q-gray:         #888888;
+  --q-gray-light:   #C8C8C8;
+  --q-gray-soft:    #F4F4F2;
+  --q-white:        #FFFFFF;
+
+  /* Semánticos — RAW */
+  --q-success:      #22C55E;
+  --q-warning:      #F59E0B;
+  --q-danger:       #EF4444;
+  --q-info:         #3B82F6;
+
+  /* ============================================================
+     ── TOKENS SEMÁNTICOS — LIGHT MODE ─────────────
+     Cualquier color que aparezca en la UI debe usar uno de estos.
+     ============================================================ */
+
+  /* Fondos */
+  --bg-page:           #F6F5FF;            /* fondo general de página */
+  --bg-surface:        #FFFFFF;            /* tarjetas, secciones blancas, inputs */
+  --bg-elevated:       #FFFFFF;            /* elementos elevados (modales, popovers) */
+  --bg-subtle:         #F4F4F2;            /* fondos secundarios, ghost buttons */
+  --bg-inverse:        #0D0D0D;            /* fondo "intencionalmente oscuro" */
+  --bg-inverse-soft:   #1A1A1A;            /* variante suave del inverso */
+
+  /* Texto */
+  --text-primary:      #0D0D0D;            /* texto principal */
+  --text-secondary:    #444444;            /* texto secundario */
+  --text-muted:        #888888;            /* texto tenue, captions */
+  --text-faint:        #C8C8C8;            /* texto muy tenue, placeholders */
+  --text-on-inverse:   #FFFFFF;            /* texto sobre fondo inverso */
+  --text-on-brand:     #FFFFFF;            /* texto sobre brand-primary */
+  --text-on-accent:    #0D0D0D;            /* texto sobre brand-accent (lime) */
+
+  /* Bordes */
+  --border-subtle:     rgba(91, 79, 240, 0.08);   /* bordes muy sutiles */
+  --border-default:    rgba(91, 79, 240, 0.20);   /* bordes normales en inputs */
+  --border-strong:     rgba(91, 79, 240, 0.40);   /* bordes destacados */
+  --border-divider:    rgba(91, 79, 240, 0.10);   /* divisores entre secciones */
+  --border-on-inverse: rgba(255, 255, 255, 0.08); /* bordes sobre fondo oscuro */
+
+  /* Marca — Primary (Purple) */
+  --brand-primary:        #5B4FF0;
+  --brand-primary-hover:  #3B30C0;
+  --brand-primary-active: #251D9A;
+  --brand-primary-soft:   #EAE8FD;         /* fondo suave de marca */
+  --brand-primary-mid:    #9B91F5;         /* decorativo */
+
+  /* Marca — Accent (Lime) */
+  --brand-accent:         #C2E53A;
+  --brand-accent-hover:   #9AB82A;
+  --brand-accent-soft:    #EEF6CC;
+  --brand-accent-mid:     #D9EE79;
+
+  /* Estados/Focus */
+  --focus-ring:           rgba(91, 79, 240, 0.25);
+  --focus-ring-accent:    rgba(194, 229, 58, 0.35);
+
+  /* Sombras (en light, sombras suaves negras) */
+  --shadow-sm:    0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-brand: 0 8px 32px rgba(91, 79, 240, 0.25);
+  --shadow-accent:0 4px 16px rgba(194, 229, 58, 0.30);
+
+  /* Surfaces de feedback */
+  --feedback-info-bg:     #EFF6FF;
+  --feedback-info-text:   #1D4ED8;
+  --feedback-info-border: #BFDBFE;
+
+  --feedback-success-bg:     #F0FDF4;
+  --feedback-success-text:   #15803D;
+  --feedback-success-border: #BBF7D0;
+
+  --feedback-warning-bg:     #FFFBEB;
+  --feedback-warning-text:   #B45309;
+  --feedback-warning-border: #FDE68A;
+
+  --feedback-danger-bg:      #FFF1F2;
+  --feedback-danger-text:    #BE123C;
+  --feedback-danger-border:  #FECDD3;
+
+  --feedback-brand-bg:       #EAE8FD;
+  --feedback-brand-text:     #251D9A;
+  --feedback-brand-border:   #9B91F5;
+
+  /* Badges */
+  --badge-purple-bg:    #EAE8FD;
+  --badge-purple-text:  #3B30C0;
+  --badge-lime-bg:      #EEF6CC;
+  --badge-lime-text:    #3a5a00;
+  --badge-success-bg:   #DCFCE7;
+  --badge-success-text: #166534;
+  --badge-warning-bg:   #FEF9C3;
+  --badge-warning-text: #854D0E;
+  --badge-danger-bg:    #FEE2E2;
+  --badge-danger-text:  #991B1B;
+  --badge-info-bg:      #DBEAFE;
+  --badge-info-text:    #1E40AF;
+
+  /* Tipografía */
+  --font-display:   'Nunito', sans-serif;
+  --font-body:      'Nunito Sans', sans-serif;
+
+  --text-xs:    11px;
+  --text-sm:    13px;
+  --text-base:  16px;
+  --text-md:    18px;
+  --text-lg:    22px;
+  --text-xl:    28px;
+  --text-2xl:   36px;
+  --text-3xl:   48px;
+  --text-4xl:   64px;
+
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   900;
+
+  /* Espaciado */
+  --sp-1:  4px;   --sp-2:  8px;   --sp-3:  12px; --sp-4:  16px;
+  --sp-5:  20px;  --sp-6:  24px;  --sp-8:  32px; --sp-10: 40px;
+  --sp-12: 48px;  --sp-16: 64px;  --sp-20: 80px;
+
+  /* Radios */
+  --r-sm: 4px;  --r-md: 8px;  --r-lg: 12px;
+  --r-xl: 16px; --r-2xl: 24px; --r-full: 9999px;
+
+  /* Transiciones */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:  220ms;
+  --dur-theme: 320ms; /* transición específica para cambio de tema */
+}
+
+/* ============================================================
+   ── TOKENS SEMÁNTICOS — DARK MODE ──────────────
+   En dark, el LIME pasa a primer plano (más visible sobre negro)
+   y el PURPLE se aclara para mantener legibilidad.
+   ============================================================ */
+.dark {
+  /* Fondos */
+  --bg-page:           #0A0A12;            /* fondo general — casi negro con un toque purple */
+  --bg-surface:        #15151F;            /* tarjetas, contenedores principales */
+  --bg-elevated:       #1E1E2A;            /* elementos elevados */
+  --bg-subtle:         #1A1A24;            /* fondos secundarios */
+  --bg-inverse:        #FFFFFF;            /* en dark, el inverso es claro */
+  --bg-inverse-soft:   #F4F4F2;
+
+  /* Texto */
+  --text-primary:      #F4F4F2;            /* texto principal claro */
+  --text-secondary:    #C8C8C8;
+  --text-muted:        #888888;
+  --text-faint:        #555555;
+  --text-on-inverse:   #0D0D0D;            /* texto sobre fondo inverso (claro) */
+  --text-on-brand:     #0D0D0D;            /* sobre lime (que es brand en dark) → negro */
+  --text-on-accent:    #0D0D0D;            /* sobre purple-mid (accent en dark) → negro/blanco según contraste */
+
+  /* Bordes */
+  --border-subtle:     rgba(255, 255, 255, 0.06);
+  --border-default:    rgba(194, 229, 58, 0.18);   /* tinte lime sutil */
+  --border-strong:     rgba(194, 229, 58, 0.40);
+  --border-divider:    rgba(255, 255, 255, 0.06);
+  --border-on-inverse: rgba(0, 0, 0, 0.08);
+
+  /* Marca — En DARK invertimos jerarquía:
+     LIME se vuelve el color principal (mejor sobre fondo oscuro)
+     y PURPLE-MID el acento secundario.
+     Esto es justo lo que pediste: hover en lime + normal en purple. */
+  --brand-primary:        #C2E53A;         /* ¡LIME es protagonista en dark! */
+  --brand-primary-hover:  #D9EE79;         /* lime más claro al hover */
+  --brand-primary-active: #9AB82A;
+  --brand-primary-soft:   rgba(194, 229, 58, 0.12);
+  --brand-primary-mid:    #D9EE79;
+
+  /* Accent — Purple en dark (más brillante para destacar) */
+  --brand-accent:         #9B91F5;         /* purple-mid: visible sobre negro */
+  --brand-accent-hover:   #5B4FF0;         /* hover vuelve al purple base */
+  --brand-accent-soft:    rgba(155, 145, 245, 0.15);
+  --brand-accent-mid:     #5B4FF0;
+
+  /* Focus rings con tinte lime */
+  --focus-ring:           rgba(194, 229, 58, 0.35);
+  --focus-ring-accent:    rgba(155, 145, 245, 0.40);
+
+  /* Sombras más profundas y con tinte */
+  --shadow-sm:    0 1px 4px rgba(0, 0, 0, 0.40);
+  --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.50);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.60);
+  --shadow-brand: 0 8px 32px rgba(194, 229, 58, 0.20);  /* glow lime */
+  --shadow-accent:0 4px 16px rgba(155, 145, 245, 0.25); /* glow purple */
+
+  /* Surfaces de feedback (en dark, fondos translúcidos sobre el surface oscuro) */
+  --feedback-info-bg:     rgba(59, 130, 246, 0.12);
+  --feedback-info-text:   #93C5FD;
+  --feedback-info-border: rgba(59, 130, 246, 0.30);
+
+  --feedback-success-bg:     rgba(34, 197, 94, 0.12);
+  --feedback-success-text:   #86EFAC;
+  --feedback-success-border: rgba(34, 197, 94, 0.30);
+
+  --feedback-warning-bg:     rgba(245, 158, 11, 0.12);
+  --feedback-warning-text:   #FCD34D;
+  --feedback-warning-border: rgba(245, 158, 11, 0.30);
+
+  --feedback-danger-bg:      rgba(239, 68, 68, 0.12);
+  --feedback-danger-text:    #FCA5A5;
+  --feedback-danger-border:  rgba(239, 68, 68, 0.30);
+
+  --feedback-brand-bg:       rgba(194, 229, 58, 0.10);
+  --feedback-brand-text:     #D9EE79;
+  --feedback-brand-border:   rgba(194, 229, 58, 0.35);
+
+  /* Badges en dark */
+  --badge-purple-bg:    rgba(155, 145, 245, 0.18);
+  --badge-purple-text:  #C7C0FA;
+  --badge-lime-bg:      rgba(194, 229, 58, 0.18);
+  --badge-lime-text:    #D9EE79;
+  --badge-success-bg:   rgba(34, 197, 94, 0.18);
+  --badge-success-text: #86EFAC;
+  --badge-warning-bg:   rgba(245, 158, 11, 0.18);
+  --badge-warning-text: #FCD34D;
+  --badge-danger-bg:    rgba(239, 68, 68, 0.18);
+  --badge-danger-text:  #FCA5A5;
+  --badge-info-bg:      rgba(59, 130, 246, 0.18);
+  --badge-info-text:    #93C5FD;
+}
+
+/* ── RESET ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  transition: background var(--dur-theme) var(--ease), color var(--dur-theme) var(--ease);
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ── LAYOUT ─────────────────────────────────────── */
+.page-wrapper { max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6); }
+.section {
+  padding: var(--sp-16) 0;
+  transition: background var(--dur-theme) var(--ease);
+}
+.section + .section { border-top: 1px solid var(--border-divider); }
+
+/* Secciones que llevan fondo "surface" (antes era q-white fijo) */
+.section.section-surface { background: var(--bg-surface); }
+
+/* ── THEME TOGGLE (switch flotante) ─────────────── */
+.theme-toggle {
+  position: fixed;
+  top: var(--sp-5);
+  right: var(--sp-5);
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-full);
+  padding: 6px;
+  box-shadow: var(--shadow-md);
+  transition: background var(--dur-theme) var(--ease),
+              border-color var(--dur-theme) var(--ease),
+              box-shadow var(--dur-theme) var(--ease);
+}
+.theme-toggle button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: var(--r-full);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--dur) var(--ease);
+}
+.theme-toggle button.active {
+  background: var(--brand-primary);
+  color: var(--text-on-brand);
+  box-shadow: var(--shadow-sm);
+}
+.theme-toggle button:not(.active):hover {
+  color: var(--text-primary);
+}
+.theme-toggle svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2;
+}
+
+/* ── GUIDE HEADER ───────────────────────────────── */
+/* El header siempre es oscuro independiente del tema (decisión de diseño) */
+.guide-header {
+  background: var(--q-black);
+  padding: var(--sp-16) 0 var(--sp-20);
+  position: relative;
+  overflow: hidden;
+}
+.guide-header::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,79,240,0.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+.guide-header::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 10%;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(194,229,58,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.guide-header-inner { position: relative; z-index: 1; }
+
+.guide-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--q-lime);
+  border: 1px solid rgba(194,229,58,0.3);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  margin-bottom: var(--sp-6);
+}
+.guide-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--q-white);
+  margin-bottom: var(--sp-2);
+}
+.guide-title span { color: var(--q-lime); }
+.guide-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--fw-light);
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-8);
+}
+.guide-desc {
+  font-size: var(--text-base);
+  color: rgba(255,255,255,0.55);
+  max-width: 560px;
+  line-height: 1.7;
+}
+.guide-meta {
+  display: flex;
+  gap: var(--sp-8);
+  margin-top: var(--sp-10);
+  flex-wrap: wrap;
+}
+.guide-meta-item {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.35);
+}
+.guide-meta-item strong {
+  display: block;
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 2px;
+}
+
+/* ── SECTION HEADER ─────────────────────────────── */
+.sec-header { margin-bottom: var(--sp-8); }
+.sec-label {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-primary);
+  margin-bottom: var(--sp-2);
+  transition: color var(--dur-theme) var(--ease);
+}
+.sec-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  transition: color var(--dur-theme) var(--ease);
+}
+.sec-title span {
+  color: var(--brand-primary);
+  transition: color var(--dur-theme) var(--ease);
+}
+.sec-desc {
+  margin-top: var(--sp-2);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ── LOGO VARIANTS ──────────────────────────────── */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--sp-4);
+}
+.logo-card {
+  border-radius: var(--r-xl);
+  padding: var(--sp-10) var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-8);
+  position: relative;
+  overflow: hidden;
+}
+.logo-card-label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: var(--fw-semi);
+  opacity: 0.5;
+}
+.logo-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: 36px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.logo-fullname {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: var(--fw-semi);
+  opacity: 0.5;
+  margin-top: -4px;
+}
+/* Las logo-cards usan colores de marca FIJOS porque demuestran cómo el logo se ve sobre cada uno */
+.logo-card.on-black { background: var(--q-black); color: var(--q-white); }
+.logo-card.on-purple { background: var(--q-purple); color: var(--q-white); }
+.logo-card.on-white { background: var(--q-white); color: var(--q-black); border: 1px solid rgba(0,0,0,0.06); }
+.logo-card.on-lime { background: var(--q-lime); color: var(--q-black); }
+.logo-card .q-lime { color: var(--q-lime); }
+.logo-card .q-purple { color: var(--q-purple); }
+.logo-card.on-purple .q-lime { color: var(--q-lime); }
+.logo-card.on-lime .logo-display { color: var(--q-black); }
+.logo-card.on-lime .q-purple { color: var(--q-purple); }
+
+/* ── COLORES (paleta raw) ───────────────────────── */
+.color-section { display: flex; flex-direction: column; gap: var(--sp-8); }
+.color-group-title {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+.color-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--sp-3);
+}
+.swatch {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  transition: transform var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease),
+              background var(--dur-theme) var(--ease),
+              border-color var(--dur-theme) var(--ease);
+}
+.swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.swatch-block { height: 80px; }
+.swatch-info { padding: var(--sp-3) var(--sp-4); }
+.swatch-name { font-family: var(--font-display); font-size: 13px; font-weight: var(--fw-bold); color: var(--text-primary); }
+.swatch-hex { font-size: 11px; font-family: 'Courier New', monospace; color: var(--text-muted); margin-top: 2px; }
+.swatch-use { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+.swatch.featured .swatch-block { height: 110px; }
+
+/* ── TIPOGRAFÍA ─────────────────────────────────── */
+.type-showcase { display: flex; flex-direction: column; gap: var(--sp-4); }
+.type-row-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6) var(--sp-8);
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-8);
+  transition: border-color var(--dur) var(--ease),
+              background var(--dur-theme) var(--ease);
+}
+.type-row-item:hover { border-color: var(--border-strong); }
+.type-meta-col { min-width: 160px; flex-shrink: 0; }
+.type-role {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-primary);
+}
+.type-specs {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  margin-top: var(--sp-1);
+  line-height: 1.6;
+}
+.type-sample-col { flex: 1; min-width: 0; }
+
+.t-display { font-family: var(--font-display); font-size: 52px; font-weight: 900; letter-spacing: -0.03em; line-height: 1; color: var(--text-primary); }
+.t-h1     { font-family: var(--font-display); font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--text-primary); }
+.t-h2     { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); }
+.t-h3     { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-primary); }
+.t-lead   { font-family: var(--font-body); font-size: 18px; font-weight: 300; line-height: 1.65; color: var(--text-secondary); }
+.t-body   { font-family: var(--font-body); font-size: 16px; font-weight: 400; line-height: 1.7; color: var(--text-secondary); }
+.t-small  { font-family: var(--font-body); font-size: 13px; font-weight: 400; line-height: 1.6; color: var(--text-muted); }
+.t-label  { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.t-mono   {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--brand-primary);
+  background: var(--brand-primary-soft);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* ── BOTONES ─────────────────────────────────────── */
+.buttons-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  align-items: center;
+}
+.buttons-dark {
+  background: var(--q-black);
+  border-radius: var(--r-xl);
+  padding: var(--sp-8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  align-items: center;
+  margin-top: var(--sp-4);
+}
+.btn {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  padding: 10px 22px;
+  border-radius: var(--r-lg);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--dur) var(--ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+
+/* btn-primary: cambia entre purple (light) → lime (dark) gracias al token */
+.btn-primary {
+  background: var(--brand-primary);
+  color: var(--text-on-brand);
+  border-color: var(--brand-primary);
+  box-shadow: var(--shadow-brand);
+}
+.btn-primary:hover {
+  background: var(--brand-primary-hover);
+  border-color: var(--brand-primary-hover);
+}
+
+/* btn-accent: cambia entre lime (light) → purple-mid (dark) — exactamente lo que pediste */
+.btn-accent {
+  background: var(--brand-accent);
+  color: var(--text-on-accent);
+  border-color: var(--brand-accent);
+  box-shadow: var(--shadow-accent);
+}
+.btn-accent:hover {
+  background: var(--brand-accent-hover);
+  border-color: var(--brand-accent-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+.btn-outline:hover { background: var(--brand-primary-soft); }
+
+.btn-ghost {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+}
+
+/* btn-dark: muestra el modo "inverso" — en light es negro, en dark sería blanco */
+.btn-dark {
+  background: var(--bg-inverse);
+  color: var(--text-on-inverse);
+  border-color: var(--bg-inverse);
+}
+.btn-dark:hover {
+  background: var(--bg-inverse-soft);
+  border-color: var(--bg-inverse-soft);
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: var(--q-white);
+  border-color: rgba(255,255,255,0.3);
+}
+.btn-outline-light:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.05); }
+
+.btn-lime-outline {
+  background: transparent;
+  color: var(--q-lime);
+  border-color: var(--q-lime);
+}
+.btn-lime-outline:hover { background: rgba(194,229,58,0.1); }
+
+.btn-sm { padding: 7px 16px; font-size: 12px; }
+.btn-lg { padding: 14px 28px; font-size: 16px; border-radius: var(--r-xl); }
+.btn-icon { padding: 10px; aspect-ratio: 1; }
+
+/* ── BADGES & CHIPS ──────────────────────────────── */
+.badges-row { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center; }
+.badge {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  display: inline-block;
+  transition: background var(--dur-theme) var(--ease),
+              color var(--dur-theme) var(--ease);
+}
+.badge-purple  { background: var(--badge-purple-bg); color: var(--badge-purple-text); }
+.badge-lime    { background: var(--badge-lime-bg); color: var(--badge-lime-text); }
+.badge-dark    { background: var(--bg-inverse); color: var(--q-lime); }
+.badge-success { background: var(--badge-success-bg); color: var(--badge-success-text); }
+.badge-warning { background: var(--badge-warning-bg); color: var(--badge-warning-text); }
+.badge-danger  { background: var(--badge-danger-bg); color: var(--badge-danger-text); }
+.badge-info    { background: var(--badge-info-bg); color: var(--badge-info-text); }
+.badge-outline { border: 1px solid var(--brand-primary); color: var(--brand-primary); background: transparent; }
+
+/* ── TARJETAS ─────────────────────────────────────── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--sp-4);
+}
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-2xl);
+  padding: var(--sp-6);
+  transition: transform var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              background var(--dur-theme) var(--ease);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-strong);
+}
+.card-icon {
+  width: 48px; height: 48px;
+  border-radius: var(--r-lg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: var(--sp-5);
+}
+.card-icon.purple { background: var(--brand-primary-soft); }
+.card-icon.lime   { background: var(--brand-accent-soft); }
+.card-icon.dark   { background: var(--bg-inverse); }
+.card-tag {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-primary);
+  margin-bottom: var(--sp-2);
+}
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+}
+.card p {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.card-footer {
+  margin-top: var(--sp-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-link {
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semi);
+  color: var(--brand-primary);
+}
+
+/* card.featured: fondo de marca SIEMPRE en color (purple light, lime dark) */
+.card.featured {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: var(--text-on-brand);
+}
+.card.featured .card-tag { color: var(--brand-accent); }
+.card.featured h3 { color: var(--text-on-brand); }
+.card.featured p { color: rgba(255, 255, 255, 0.65); }
+.dark .card.featured p { color: rgba(13, 13, 13, 0.65); } /* en dark el text-on-brand es negro */
+.card.featured .card-link { color: var(--brand-accent); }
+
+/* card.dark-card: SIEMPRE oscura — útil para contraste intencional */
+.card.dark-card {
+  background: var(--q-black);
+  border-color: transparent;
+}
+.card.dark-card .card-tag { color: var(--q-lime); }
+.card.dark-card h3 { color: var(--q-white); }
+.card.dark-card p { color: rgba(255,255,255,0.55); }
+.card.dark-card .card-link { color: var(--q-purple-mid); }
+
+/* ── INPUTS & FORMULARIOS ───────────────────────── */
+.form-demo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); }
+.form-full { grid-column: 1 / -1; }
+.form-group { display: flex; flex-direction: column; gap: var(--sp-2); }
+.form-label {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.form-input {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-default);
+  border-radius: var(--r-lg);
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease),
+              background var(--dur-theme) var(--ease),
+              color var(--dur-theme) var(--ease);
+  width: 100%;
+}
+.form-input:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+.form-input::placeholder { color: var(--text-faint); }
+textarea.form-input { resize: vertical; min-height: 100px; }
+select.form-input { cursor: pointer; }
+.form-hint { font-size: 11px; color: var(--text-muted); }
+.form-input.error { border-color: var(--q-danger); }
+.form-error { font-size: 11px; color: var(--q-danger); }
+.form-input.success { border-color: var(--q-success); }
+
+/* ── ALERTAS ─────────────────────────────────────── */
+.alerts-stack { display: flex; flex-direction: column; gap: var(--sp-3); }
+.alert {
+  border-radius: var(--r-lg);
+  padding: var(--sp-4) var(--sp-5);
+  display: flex;
+  gap: var(--sp-3);
+  align-items: flex-start;
+  font-size: var(--text-sm);
+  border: 1px solid transparent;
+  transition: background var(--dur-theme) var(--ease),
+              color var(--dur-theme) var(--ease),
+              border-color var(--dur-theme) var(--ease);
+}
+.alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.alert-content { flex: 1; }
+.alert-title { font-weight: var(--fw-semi); margin-bottom: 2px; }
+.alert-desc { opacity: 0.85; }
+.alert-info    { background: var(--feedback-info-bg); color: var(--feedback-info-text); border-color: var(--feedback-info-border); }
+.alert-success { background: var(--feedback-success-bg); color: var(--feedback-success-text); border-color: var(--feedback-success-border); }
+.alert-warning { background: var(--feedback-warning-bg); color: var(--feedback-warning-text); border-color: var(--feedback-warning-border); }
+.alert-danger  { background: var(--feedback-danger-bg); color: var(--feedback-danger-text); border-color: var(--feedback-danger-border); }
+.alert-brand   { background: var(--feedback-brand-bg); color: var(--feedback-brand-text); border-color: var(--feedback-brand-border); }
+
+/* ── STATS ───────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--sp-4);
+}
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  transition: transform var(--dur) var(--ease),
+              background var(--dur-theme) var(--ease),
+              border-color var(--dur-theme) var(--ease);
+}
+.stat-card:hover { transform: translateY(-3px); }
+.stat-label {
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semi);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: var(--fw-black);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.stat-value span { font-size: 20px; color: var(--brand-primary); }
+.stat-trend { font-size: var(--text-xs); margin-top: var(--sp-2); color: var(--text-muted); }
+.stat-trend.up   { color: var(--q-success); }
+.stat-trend.down { color: var(--q-danger); }
+
+/* stat-card.purple-stat: tarjeta de marca destacada */
+.stat-card.purple-stat { background: var(--brand-primary); border-color: var(--brand-primary); }
+.stat-card.purple-stat .stat-label { color: rgba(255, 255, 255, 0.6); }
+.stat-card.purple-stat .stat-value { color: var(--text-on-brand); }
+.stat-card.purple-stat .stat-value span { color: var(--brand-accent); }
+.stat-card.purple-stat .stat-trend { color: rgba(255, 255, 255, 0.7); }
+/* En dark, el brand-primary es lime y el text-on-brand es negro, así que ajustamos */
+.dark .stat-card.purple-stat .stat-label { color: rgba(13, 13, 13, 0.55); }
+.dark .stat-card.purple-stat .stat-trend { color: rgba(13, 13, 13, 0.65); }
+.dark .stat-card.purple-stat .stat-value span { color: var(--brand-accent); }
+
+/* ── HERO EXAMPLE ─────────────────────────────────── */
+/* Hero example siempre oscuro: muestra cómo queda la marca sobre fondo dark */
+.hero-example {
+  background: var(--q-black);
+  border-radius: var(--r-2xl);
+  padding: var(--sp-16) var(--sp-12);
+  position: relative;
+  overflow: hidden;
+}
+.hero-example::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -40px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,79,240,0.3) 0%, transparent 65%);
+}
+.hero-example::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 20%;
+  width: 250px; height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(194,229,58,0.1) 0%, transparent 65%);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 600px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: var(--text-xs); font-weight: var(--fw-semi); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--q-lime);
+  border: 1px solid rgba(194,229,58,0.25);
+  border-radius: var(--r-full);
+  padding: var(--sp-1) var(--sp-4);
+  margin-bottom: var(--sp-6);
+}
+.hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--q-lime); }
+.hero-heading {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: var(--fw-black);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--q-white);
+  margin-bottom: var(--sp-5);
+}
+.hero-heading em { font-style: normal; color: var(--q-lime); }
+.hero-body {
+  font-size: 17px; font-weight: var(--fw-light);
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: var(--sp-8);
+}
+.hero-actions { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+
+/* ── TOKENS TABLE ────────────────────────────────── */
+.tokens-wrap { background: var(--q-black); border-radius: var(--r-xl); overflow: hidden; }
+.tokens-table { width: 100%; border-collapse: collapse; }
+.tokens-table thead th {
+  font-size: var(--text-xs); font-weight: var(--fw-semi); letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); padding: var(--sp-4) var(--sp-6); text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.tokens-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background var(--dur) var(--ease); }
+.tokens-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+.tokens-table tbody td { padding: var(--sp-3) var(--sp-6); font-size: var(--text-sm); color: rgba(255,255,255,0.7); }
+.tokens-table .token-name { font-family: 'Courier New', monospace; font-size: 12px; color: var(--q-purple-mid); }
+.tokens-table .token-value { font-family: 'Courier New', monospace; font-size: 12px; color: var(--q-lime); }
+.tokens-table .token-cat {
+  font-size: 11px; font-weight: var(--fw-semi); letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: var(--r-full);
+}
+.cat-color    { background: rgba(91,79,240,0.2); color: var(--q-purple-mid); }
+.cat-type     { background: rgba(194,229,58,0.15); color: var(--q-lime); }
+.cat-space    { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+.cat-radius   { background: rgba(255,140,0,0.15); color: #FFB347; }
+.cat-semantic { background: rgba(155,145,245,0.20); color: #C7C0FA; }
+
+/* ============================================================
+   ── SECCIÓN NUEVA: PALETA SEMÁNTICA LIGHT/DARK ─────
+   Esta es la sección principal que muestra cómo cada token
+   semántico cambia entre los modos.
+   ============================================================ */
+.theme-paletas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+}
+@media (min-width: 900px) {
+  .theme-paletas { grid-template-columns: 1fr 1fr; }
+}
+.theme-paleta {
+  border-radius: var(--r-2xl);
+  padding: var(--sp-8);
+  position: relative;
+  overflow: hidden;
+}
+.theme-paleta-light {
+  background: #F6F5FF;
+  color: #0D0D0D;
+  border: 1px solid rgba(91, 79, 240, 0.10);
+}
+.theme-paleta-dark {
+  background: #0A0A12;
+  color: #F4F4F2;
+  border: 1px solid rgba(194, 229, 58, 0.15);
+}
+.theme-paleta-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-6);
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid currentColor;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+.theme-paleta-dark .theme-paleta-header { border-bottom-color: rgba(255, 255, 255, 0.08); }
+.theme-paleta-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: var(--fw-black);
+  letter-spacing: -0.01em;
+}
+.theme-paleta-tag {
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  font-family: 'Courier New', monospace;
+}
+.theme-paleta-light .theme-paleta-tag { background: rgba(91, 79, 240, 0.10); color: #5B4FF0; }
+.theme-paleta-dark .theme-paleta-tag { background: rgba(194, 229, 58, 0.15); color: #C2E53A; }
+
+.theme-token-group {
+  margin-bottom: var(--sp-6);
+}
+.theme-token-group:last-child { margin-bottom: 0; }
+.theme-token-group-title {
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: var(--sp-3);
+}
+.theme-token-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 8px 10px;
+  border-radius: var(--r-md);
+  transition: background var(--dur) var(--ease);
+}
+.theme-paleta-light .theme-token-row:hover { background: rgba(91, 79, 240, 0.05); }
+.theme-paleta-dark .theme-token-row:hover { background: rgba(194, 229, 58, 0.06); }
+
+.theme-token-chip {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-md);
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.theme-paleta-dark .theme-token-chip { border-color: rgba(255, 255, 255, 0.08); }
+
+.theme-token-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.theme-token-name {
+  font-family: 'Courier New', monospace;
+  font-size: 11.5px;
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+}
+.theme-paleta-light .theme-token-name { color: #3B30C0; }
+.theme-paleta-dark .theme-token-name { color: #C2E53A; }
+
+.theme-token-value {
+  font-family: 'Courier New', monospace;
+  font-size: 10.5px;
+  opacity: 0.5;
+  margin-top: 1px;
+}
+
+/* Demo UI: muestra los componentes reales en cada paleta */
+.theme-paleta-demo {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-6);
+  border-top: 1px dashed currentColor;
+  border-top-color: rgba(0, 0, 0, 0.10);
+}
+.theme-paleta-dark .theme-paleta-demo { border-top-color: rgba(255, 255, 255, 0.10); }
+.theme-paleta-demo-title {
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: var(--sp-4);
+}
+.theme-paleta-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+/* Mini botones de muestra en la paleta */
+.theme-mini-btn {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  padding: 7px 14px;
+  border-radius: var(--r-md);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all var(--dur) var(--ease);
+  letter-spacing: 0.02em;
+}
+/* Light demo */
+.theme-paleta-light .theme-mini-btn-primary {
+  background: #5B4FF0; color: #FFFFFF; border-color: #5B4FF0;
+}
+.theme-paleta-light .theme-mini-btn-primary:hover { background: #3B30C0; border-color: #3B30C0; }
+.theme-paleta-light .theme-mini-btn-accent {
+  background: #C2E53A; color: #0D0D0D; border-color: #C2E53A;
+}
+.theme-paleta-light .theme-mini-btn-accent:hover { background: #9AB82A; border-color: #9AB82A; }
+.theme-paleta-light .theme-mini-btn-outline {
+  background: transparent; color: #5B4FF0; border-color: #5B4FF0;
+}
+.theme-paleta-light .theme-mini-btn-outline:hover { background: #EAE8FD; }
+
+/* Dark demo — invertido: lime principal, purple-mid acento */
+.theme-paleta-dark .theme-mini-btn-primary {
+  background: #C2E53A; color: #0D0D0D; border-color: #C2E53A;
+}
+.theme-paleta-dark .theme-mini-btn-primary:hover { background: #D9EE79; border-color: #D9EE79; }
+.theme-paleta-dark .theme-mini-btn-accent {
+  background: #9B91F5; color: #0D0D0D; border-color: #9B91F5;
+}
+.theme-paleta-dark .theme-mini-btn-accent:hover { background: #5B4FF0; border-color: #5B4FF0; color: #FFFFFF; }
+.theme-paleta-dark .theme-mini-btn-outline {
+  background: transparent; color: #C2E53A; border-color: #C2E53A;
+}
+.theme-paleta-dark .theme-mini-btn-outline:hover { background: rgba(194, 229, 58, 0.10); }
+
+/* Bloque de código con la sintaxis Tailwind */
+.tailwind-snippet {
+  margin-top: var(--sp-6);
+  background: var(--q-black);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  font-family: 'Courier New', monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  overflow-x: auto;
+  white-space: pre;          /* preservar saltos de línea y espacios */
+  tab-size: 2;
+}
+.tailwind-snippet .tw-comment { color: rgba(255, 255, 255, 0.35); font-style: italic; }
+.tailwind-snippet .tw-class { color: var(--q-lime); }
+.tailwind-snippet .tw-prefix { color: var(--q-purple-mid); }
+.tailwind-snippet .tw-tag { color: #FFB347; }
+.tailwind-snippet .tw-keyword { color: #FF79C6; font-weight: 600; }
+
+/* ── FONT-LOADING RECOMENDACIONES ───────────────── */
+.font-recommend-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-5);
+  margin-top: var(--sp-6);
+}
+@media (min-width: 1024px) {
+  .font-recommend-grid { grid-template-columns: 1fr 1fr; }
+}
+.font-recommend-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  min-width: 0;
+  transition: background var(--dur-theme) var(--ease), border-color var(--dur-theme) var(--ease);
+}
+@media (max-width: 600px) {
+  .font-recommend-card { padding: var(--sp-4); border-radius: var(--r-lg); gap: var(--sp-3); }
+}
+.font-recommend-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+.font-recommend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  white-space: nowrap;
+}
+.dark .font-recommend-badge {
+  background: rgba(194, 229, 58, 0.12);
+  color: var(--q-lime);
+}
+.font-recommend-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+  margin: 0;
+  word-wrap: break-word;
+}
+@media (max-width: 600px) {
+  .font-recommend-title { font-size: 16px; }
+}
+.font-recommend-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+.font-recommend-code {
+  background: var(--q-black);
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 13px;
+  line-height: 1.65;
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  tab-size: 2;
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  .font-recommend-code { font-size: 11px; padding: var(--sp-3); line-height: 1.6; }
+}
+.font-recommend-code .tw-comment { color: rgba(255, 255, 255, 0.4); font-style: italic; }
+.font-recommend-code .tw-class { color: var(--q-lime); }
+.font-recommend-code .tw-prefix { color: var(--q-purple-mid); }
+.font-recommend-code .tw-tag { color: #FFB347; }
+.font-recommend-code .tw-keyword { color: #FF79C6; font-weight: 600; }
+.font-recommend-note {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.font-recommend-note strong {
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+/* ── FOOTER DEL GUIDE ───────────────────────────── */
+.guide-footer {
+  background: var(--q-black);
+  padding: var(--sp-12) 0;
+  margin-top: var(--sp-16);
+}
+.guide-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-6);
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: var(--fw-black);
+  color: var(--q-white);
+}
+.footer-logo span { color: var(--q-lime); }
+.footer-tagline {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.footer-version {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  font-family: 'Courier New', monospace;
+}
+
+/* ── RESPONSIVE TWEAKS ──────────────────────────── */
+@media (max-width: 720px) {
+  .form-demo { grid-template-columns: 1fr; }
+  .type-row-item { flex-direction: column; gap: var(--sp-3); align-items: stretch; }
+  .type-meta-col { min-width: 0; }
+  .theme-toggle { top: auto; bottom: var(--sp-4); right: 50%; transform: translateX(50%); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     THEME TOGGLE — Switch Light / Dark
+════════════════════════════════════════════════════ -->
+<div class="theme-toggle" role="group" aria-label="Cambiar tema">
+  <button id="btn-light" class="active" aria-pressed="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    Light
+  </button>
+  <button id="btn-dark" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    Dark
+  </button>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════
+     CABECERA DEL GUIDE
+════════════════════════════════════════════════════ -->
+<header class="guide-header">
+  <div class="page-wrapper">
+    <div class="guide-header-inner">
+      <div class="guide-tag">Brand & Style Guide</div>
+      <h1 class="guide-title">QUANT<span>IA</span></h1>
+      <p class="guide-subtitle">Ingeniería y Consultoría</p>
+      <p class="guide-desc">Sistema de diseño oficial de QUANTIA. Define los estándares visuales, tipográficos y de componentes para todos los materiales de comunicación, producto y marketing. Versión 2.0 con soporte completo Light & Dark.</p>
+      <div class="guide-meta">
+        <div class="guide-meta-item"><strong>Versión</strong>2.0 — Abril 2026</div>
+        <div class="guide-meta-item"><strong>Sectores</strong>Consultoría · Tecnología · IA · BIM</div>
+        <div class="guide-meta-item"><strong>Modos</strong>Light & Dark</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ════════════════════════════════════════════════════
+     LOGO
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">01 — Identidad</p>
+      <h2 class="sec-title">Logo <span>&</span> Variaciones</h2>
+      <p class="sec-desc">El logotipo de QUANTIA destaca visualmente la abreviatura "IA" como elemento diferencial, reforzando el posicionamiento tecnológico de la empresa.</p>
+    </div>
+
+    <div class="logo-grid">
+      <div class="logo-card on-black">
+        <span class="logo-card-label">Versión principal · fondo negro</span>
+        <div>
+          <div class="logo-display"><span class="q-lime">QUANT</span><span style="color:#fff">I</span><span class="q-lime">A</span></div>
+          <div class="logo-fullname">Ingeniería y Consultoría</div>
+        </div>
+      </div>
+      <div class="logo-card on-purple">
+        <span class="logo-card-label">Versión corporativa · fondo purple</span>
+        <div>
+          <div class="logo-display" style="color:#fff">QUANT<span class="q-lime">IA</span></div>
+          <div class="logo-fullname">Ingeniería y Consultoría</div>
+        </div>
+      </div>
+      <div class="logo-card on-white">
+        <span class="logo-card-label">Versión light · fondo blanco</span>
+        <div>
+          <div class="logo-display"><span style="color:#000">QUANT</span><span class="q-purple">IA</span></div>
+          <div class="logo-fullname" style="color:#888">Ingeniería y Consultoría</div>
+        </div>
+      </div>
+      <div class="logo-card on-black">
+        <span class="logo-card-label">Versión monocromática oscura</span>
+        <div>
+          <div class="logo-display" style="color:#fff">QUANTI<span class="q-lime">A</span></div>
+          <div class="logo-fullname">Ingeniería y Consultoría</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     COLORES (paleta raw de marca)
+════════════════════════════════════════════════════ -->
+<section class="section section-surface">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">02 — Paleta</p>
+      <h2 class="sec-title">Colores <span>Corporativos</span></h2>
+      <p class="sec-desc">Paleta de marca con sus valores exactos. Estos son los <em>colores raw</em>: la base sobre la que se construye el sistema semántico Light/Dark (ver sección 12).</p>
+    </div>
+
+    <div class="color-section">
+      <div>
+        <p class="color-group-title">Colores principales</p>
+        <div class="color-row">
+          <div class="swatch featured"><div class="swatch-block" style="background: #5B4FF0;"></div><div class="swatch-info"><div class="swatch-name">Quantia Purple</div><div class="swatch-hex">#5B4FF0</div><div class="swatch-use">Color corporativo principal</div></div></div>
+          <div class="swatch featured"><div class="swatch-block" style="background: #C2E53A;"></div><div class="swatch-info"><div class="swatch-name">Quantia Lime</div><div class="swatch-hex">#C2E53A</div><div class="swatch-use">Acento · diferencial IA</div></div></div>
+          <div class="swatch featured"><div class="swatch-block" style="background: #0D0D0D;"></div><div class="swatch-info"><div class="swatch-name">Quantia Black</div><div class="swatch-hex">#0D0D0D</div><div class="swatch-use">Fondos premium · contraste</div></div></div>
+          <div class="swatch featured"><div class="swatch-block" style="background: #FFFFFF; border-bottom: 1px solid #eee;"></div><div class="swatch-info"><div class="swatch-name">Blanco puro</div><div class="swatch-hex">#FFFFFF</div><div class="swatch-use">Tipografía · fondos claros</div></div></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="color-group-title">Variaciones Purple</p>
+        <div class="color-row">
+          <div class="swatch"><div class="swatch-block" style="background:#251D9A;"></div><div class="swatch-info"><div class="swatch-name">Purple Deeper</div><div class="swatch-hex">#251D9A</div><div class="swatch-use">Focus · activo</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#3B30C0;"></div><div class="swatch-info"><div class="swatch-name">Purple Dark</div><div class="swatch-hex">#3B30C0</div><div class="swatch-use">Hover · CTA press</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#5B4FF0;"></div><div class="swatch-info"><div class="swatch-name">Purple Base</div><div class="swatch-hex">#5B4FF0</div><div class="swatch-use">Por defecto</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#9B91F5;"></div><div class="swatch-info"><div class="swatch-name">Purple Mid</div><div class="swatch-hex">#9B91F5</div><div class="swatch-use">Decorativo · iconos</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#EAE8FD;"></div><div class="swatch-info"><div class="swatch-name">Purple Light</div><div class="swatch-hex">#EAE8FD</div><div class="swatch-use">Fondos suaves · cards</div></div></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="color-group-title">Variaciones Lime</p>
+        <div class="color-row">
+          <div class="swatch"><div class="swatch-block" style="background:#7AB820;"></div><div class="swatch-info"><div class="swatch-name">Lime Darker</div><div class="swatch-hex">#7AB820</div><div class="swatch-use">Texto sobre lime</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#9AB82A;"></div><div class="swatch-info"><div class="swatch-name">Lime Dark</div><div class="swatch-hex">#9AB82A</div><div class="swatch-use">Hover states</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#C2E53A;"></div><div class="swatch-info"><div class="swatch-name">Lime Base</div><div class="swatch-hex">#C2E53A</div><div class="swatch-use">Por defecto</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#D9EE79;"></div><div class="swatch-info"><div class="swatch-name">Lime Light</div><div class="swatch-hex">#D9EE79</div><div class="swatch-use">Tints · suave</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#EEF6CC;"></div><div class="swatch-info"><div class="swatch-name">Lime Pale</div><div class="swatch-hex">#EEF6CC</div><div class="swatch-use">Fondos · backgrounds</div></div></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="color-group-title">Grises y neutros</p>
+        <div class="color-row">
+          <div class="swatch"><div class="swatch-block" style="background:#1A1A1A;"></div><div class="swatch-info"><div class="swatch-name">Black Soft</div><div class="swatch-hex">#1A1A1A</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#444444;"></div><div class="swatch-info"><div class="swatch-name">Gray Dark</div><div class="swatch-hex">#444444</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#888888;"></div><div class="swatch-info"><div class="swatch-name">Gray</div><div class="swatch-hex">#888888</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#C8C8C8;"></div><div class="swatch-info"><div class="swatch-name">Gray Light</div><div class="swatch-hex">#C8C8C8</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#F4F4F2; border-bottom: 1px solid #eee;"></div><div class="swatch-info"><div class="swatch-name">Gray Soft</div><div class="swatch-hex">#F4F4F2</div></div></div>
+        </div>
+      </div>
+
+      <div>
+        <p class="color-group-title">Colores semánticos</p>
+        <div class="color-row">
+          <div class="swatch"><div class="swatch-block" style="background:#22C55E;"></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#22C55E</div><div class="swatch-use">Confirmaciones · OK</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#F59E0B;"></div><div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-hex">#F59E0B</div><div class="swatch-use">Alertas · precaución</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#EF4444;"></div><div class="swatch-info"><div class="swatch-name">Danger</div><div class="swatch-hex">#EF4444</div><div class="swatch-use">Errores · eliminar</div></div></div>
+          <div class="swatch"><div class="swatch-block" style="background:#3B82F6;"></div><div class="swatch-info"><div class="swatch-name">Info</div><div class="swatch-hex">#3B82F6</div><div class="swatch-use">Información · ayuda</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     TIPOGRAFÍA
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">03 — Tipo</p>
+      <h2 class="sec-title">Sistema <span>Tipográfico</span></h2>
+      <p class="sec-desc">Fuente principal: <strong>Nunito</strong> (display/titulares) + <strong>Nunito Sans</strong> (cuerpo/UI). Familia geométrica redondeada que transmite modernidad técnica y accesibilidad.</p>
+    </div>
+
+    <div class="type-showcase">
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Display</div><div class="type-specs">Nunito 900<br>52–64px<br>tracking: -0.03em</div></div><div class="type-sample-col"><div class="t-display">QUANTIA</div></div></div>
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Heading H1</div><div class="type-specs">Nunito 800<br>36px<br>tracking: -0.02em</div></div><div class="type-sample-col"><div class="t-h1">Ingeniería y Consultoría</div></div></div>
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Heading H2</div><div class="type-specs">Nunito 700<br>26px<br>tracking: -0.01em</div></div><div class="type-sample-col"><div class="t-h2">Soluciones BIM, IA y Desarrollo</div></div></div>
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Heading H3</div><div class="type-specs">Nunito 700<br>20px</div></div><div class="type-sample-col"><div class="t-h3">Automatización de Procesos Constructivos</div></div></div>
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Lead / Intro</div><div class="type-specs">Nunito Sans 300<br>18px · lh 1.65</div></div><div class="type-sample-col"><div class="t-lead">Transformamos la manera en que se conciben, diseñan y ejecutan los proyectos de ingeniería, aplicando inteligencia artificial y tecnologías BIM.</div></div></div>
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Body</div><div class="type-specs">Nunito Sans 400<br>16px · lh 1.7</div></div><div class="type-sample-col"><div class="t-body">Nuestro equipo combina la experiencia en consultoría tradicional con las capacidades más avanzadas en inteligencia artificial.</div></div></div>
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Small / Caption</div><div class="type-specs">Nunito Sans 400<br>13px · lh 1.6</div></div><div class="type-sample-col"><div class="t-small">* Los datos se actualizan en tiempo real. Última sincronización: 20 de abril de 2026 a las 09:32h.</div></div></div>
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Label / Tag</div><div class="type-specs">Nunito Sans 600<br>11px · tracking 0.1em<br>UPPERCASE</div></div><div class="type-sample-col"><div class="t-label">Consultoría · Tecnología · BIM · Inteligencia Artificial</div></div></div>
+      <div class="type-row-item"><div class="type-meta-col"><div class="type-role">Code / Mono</div><div class="type-specs">Courier New<br>14px</div></div><div class="type-sample-col"><code class="t-mono">--brand-primary: #5B4FF0;</code></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     BOTONES
+════════════════════════════════════════════════════ -->
+<section class="section section-surface">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">04 — Componentes</p>
+      <h2 class="sec-title"><span>Botones</span> & Acciones</h2>
+      <p class="sec-desc">Sistema de botones que se adapta automáticamente al modo activo. En light, <strong>primary = purple</strong>; en dark, <strong>primary = lime</strong>.</p>
+    </div>
+
+    <p class="color-group-title" style="margin-bottom: 12px;">Sobre fondo claro / oscuro (cambia según tema)</p>
+    <div class="buttons-demo">
+      <button class="btn btn-primary">Contactar ahora</button>
+      <button class="btn btn-accent">Ver demo IA</button>
+      <button class="btn btn-outline">Más información</button>
+      <button class="btn btn-ghost">Secundario</button>
+      <button class="btn btn-dark">Versión inversa</button>
+    </div>
+
+    <p class="color-group-title" style="margin-top: 24px; margin-bottom: 12px;">Tamaños</p>
+    <div class="buttons-demo">
+      <button class="btn btn-primary btn-sm">Pequeño</button>
+      <button class="btn btn-primary">Normal</button>
+      <button class="btn btn-primary btn-lg">Grande</button>
+    </div>
+
+    <div class="buttons-dark" style="margin-top: 24px;">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); width: 100%;">Sobre fondo oscuro fijo (siempre)</span>
+      <button class="btn btn-accent">Ver demo IA</button>
+      <button class="btn btn-primary">Contactar</button>
+      <button class="btn btn-outline-light">Más info</button>
+      <button class="btn btn-lime-outline">Proyectos</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     BADGES
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">05 — Etiquetas</p>
+      <h2 class="sec-title">Badges <span>&</span> Chips</h2>
+    </div>
+    <div class="badges-row">
+      <span class="badge badge-purple">Consultoría</span>
+      <span class="badge badge-lime">IA Aplicada</span>
+      <span class="badge badge-dark">BIM</span>
+      <span class="badge badge-success">Activo</span>
+      <span class="badge badge-warning">Pendiente</span>
+      <span class="badge badge-danger">Error</span>
+      <span class="badge badge-info">Información</span>
+      <span class="badge badge-outline">Tecnología</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     TARJETAS
+════════════════════════════════════════════════════ -->
+<section class="section section-surface">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">06 — Cards</p>
+      <h2 class="sec-title">Tarjetas de <span>Servicios</span></h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon purple">🏗️</div>
+        <div class="card-tag">BIM</div>
+        <h3>Modelado BIM Avanzado</h3>
+        <p>Implementación de metodología BIM en proyectos de arquitectura e ingeniería. Coordinación de disciplinas y detección de interferencias.</p>
+        <div class="card-footer">
+          <span class="badge badge-lime">BIM · Revit · IFC</span>
+          <a class="card-link" href="#">Ver más →</a>
+        </div>
+      </div>
+      <div class="card featured">
+        <div class="card-icon lime">🤖</div>
+        <div class="card-tag">Destacado</div>
+        <h3>IA para Ingeniería</h3>
+        <p>Aplicamos inteligencia artificial para optimizar procesos constructivos, predicción de costes y automatización de informes técnicos.</p>
+        <div class="card-footer">
+          <span class="badge badge-dark">IA · ML · Python</span>
+          <a class="card-link" href="#">Ver más →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon purple">💡</div>
+        <div class="card-tag">Consultoría</div>
+        <h3>Transformación Digital</h3>
+        <p>Acompañamos a empresas del sector construction & engineering en su digitalización con estrategia, formación e implementación.</p>
+        <div class="card-footer">
+          <span class="badge badge-purple">Digital · Change</span>
+          <a class="card-link" href="#">Ver más →</a>
+        </div>
+      </div>
+      <div class="card dark-card">
+        <div class="card-icon dark">⚙️</div>
+        <div class="card-tag">Desarrollo</div>
+        <h3>Software a Medida</h3>
+        <p>Desarrollamos herramientas específicas para el sector: plugins de Revit, dashboards de obra, APIs de integración y automatizaciones.</p>
+        <div class="card-footer">
+          <span class="badge badge-dark">Dev · API · Cloud</span>
+          <a class="card-link" href="#">Ver más →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     STATS
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">07 — Datos</p>
+      <h2 class="sec-title">Métricas <span>&</span> Estadísticas</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card purple-stat">
+        <div class="stat-label">Proyectos completados</div>
+        <div class="stat-value">120<span>+</span></div>
+        <div class="stat-trend up">↑ 24% vs año anterior</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Clientes activos</div>
+        <div class="stat-value">48<span></span></div>
+        <div class="stat-trend up">↑ 12 nuevos en 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Horas de IA procesadas</div>
+        <div class="stat-value">3.2<span>K</span></div>
+        <div class="stat-trend up">↑ 300% crecimiento</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Satisfacción cliente</div>
+        <div class="stat-value">98<span>%</span></div>
+        <div class="stat-trend">NPS promedio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     FORMULARIOS
+════════════════════════════════════════════════════ -->
+<section class="section section-surface">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">08 — Formularios</p>
+      <h2 class="sec-title">Inputs <span>&</span> Controles</h2>
+    </div>
+
+    <div style="max-width: 680px;">
+      <div class="form-demo">
+        <div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text" placeholder="Juan García"></div>
+        <div class="form-group"><label class="form-label">Empresa</label><input class="form-input" type="text" placeholder="Constructora S.A."></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input success" type="email" value="juan@empresa.com"><span class="form-hint" style="color: var(--q-success);">✓ Email válido</span></div>
+        <div class="form-group"><label class="form-label">Teléfono</label><input class="form-input error" type="tel" value="123"><span class="form-error">Formato incorrecto</span></div>
+        <div class="form-group"><label class="form-label">Servicio de interés</label><select class="form-input"><option>Selecciona un servicio...</option><option>Consultoría BIM</option><option>IA para Ingeniería</option><option>Desarrollo a medida</option></select></div>
+        <div class="form-group"><label class="form-label">Presupuesto estimado</label><input class="form-input" type="text" placeholder="€10.000 – €50.000"></div>
+        <div class="form-group form-full"><label class="form-label">Descripción del proyecto</label><textarea class="form-input" placeholder="Describe brevemente tu proyecto o necesidad..."></textarea></div>
+        <div class="form-group form-full"><button class="btn btn-primary btn-lg" style="width: fit-content;">Enviar consulta →</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     ALERTAS
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">09 — Feedback</p>
+      <h2 class="sec-title">Alertas <span>&</span> Notificaciones</h2>
+    </div>
+    <div class="alerts-stack">
+      <div class="alert alert-brand"><span class="alert-icon">🚀</span><div class="alert-content"><div class="alert-title">Nueva integración disponible</div><div class="alert-desc">El módulo de análisis IA v2.0 ya está disponible para todos los proyectos activos. Actívalo desde la configuración.</div></div></div>
+      <div class="alert alert-success"><span class="alert-icon">✓</span><div class="alert-content"><div class="alert-title">Proyecto exportado correctamente</div><div class="alert-desc">El modelo BIM se ha exportado en formato IFC 4.0 sin errores de coordinación.</div></div></div>
+      <div class="alert alert-warning"><span class="alert-icon">⚠</span><div class="alert-content"><div class="alert-title">Revisión pendiente</div><div class="alert-desc">Hay 3 interferencias detectadas en el modelo que requieren resolución antes de la entrega.</div></div></div>
+      <div class="alert alert-danger"><span class="alert-icon">✕</span><div class="alert-content"><div class="alert-title">Error en la sincronización</div><div class="alert-desc">No se ha podido conectar con el servidor BIM360. Comprueba la conexión e inténtalo de nuevo.</div></div></div>
+      <div class="alert alert-info"><span class="alert-icon">ℹ</span><div class="alert-content"><div class="alert-title">Mantenimiento programado</div><div class="alert-desc">El sistema estará en mantenimiento el domingo 27 de abril de 2:00h a 4:00h (CET).</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     HERO EXAMPLE
+════════════════════════════════════════════════════ -->
+<section class="section section-surface">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">10 — Aplicación</p>
+      <h2 class="sec-title">Ejemplo <span>Hero</span></h2>
+      <p class="sec-desc">Composición de página de inicio aplicando el sistema de diseño completo.</p>
+    </div>
+
+    <div class="hero-example">
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Inteligencia Artificial aplicada
+        </div>
+        <h2 class="hero-heading">
+          Ingeniería del futuro,<br><em>construida hoy.</em>
+        </h2>
+        <p class="hero-body">
+          Combinamos consultoría experta, tecnología BIM e inteligencia artificial para transformar la manera en que se conciben y ejecutan los grandes proyectos de ingeniería.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-accent btn-lg">Ver nuestros servicios</button>
+          <button class="btn btn-outline-light btn-lg">Contactar →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     TOKENS RAW
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">11 — Variables Raw</p>
+      <h2 class="sec-title">Design <span>Tokens</span></h2>
+      <p class="sec-desc">Variables CSS de la paleta raw de marca. <strong>No usar directamente en componentes</strong> — usa los tokens semánticos de la sección 12 para que tu UI reaccione a Light/Dark.</p>
+    </div>
+
+    <div class="tokens-wrap">
+      <table class="tokens-table">
+        <thead><tr><th>Variable CSS</th><th>Valor</th><th>Categoría</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr><td class="token-name">--q-purple</td><td class="token-value">#5B4FF0</td><td><span class="token-cat cat-color">Color</span></td><td>Color principal corporativo</td></tr>
+          <tr><td class="token-name">--q-purple-dark</td><td class="token-value">#3B30C0</td><td><span class="token-cat cat-color">Color</span></td><td>Hover y estados activos</td></tr>
+          <tr><td class="token-name">--q-purple-light</td><td class="token-value">#EAE8FD</td><td><span class="token-cat cat-color">Color</span></td><td>Fondos suaves y cards</td></tr>
+          <tr><td class="token-name">--q-lime</td><td class="token-value">#C2E53A</td><td><span class="token-cat cat-color">Color</span></td><td>Acento principal / IA</td></tr>
+          <tr><td class="token-name">--q-lime-dark</td><td class="token-value">#9AB82A</td><td><span class="token-cat cat-color">Color</span></td><td>Hover sobre lime</td></tr>
+          <tr><td class="token-name">--q-black</td><td class="token-value">#0D0D0D</td><td><span class="token-cat cat-color">Color</span></td><td>Fondo oscuro premium</td></tr>
+          <tr><td class="token-name">--font-display</td><td class="token-value">'Nunito', sans-serif</td><td><span class="token-cat cat-type">Tipo</span></td><td>Titulares y display</td></tr>
+          <tr><td class="token-name">--font-body</td><td class="token-value">'Nunito Sans', sans-serif</td><td><span class="token-cat cat-type">Tipo</span></td><td>Cuerpo de texto y UI</td></tr>
+          <tr><td class="token-name">--text-base</td><td class="token-value">16px</td><td><span class="token-cat cat-type">Tipo</span></td><td>Tamaño base de texto</td></tr>
+          <tr><td class="token-name">--sp-4</td><td class="token-value">16px</td><td><span class="token-cat cat-space">Espacio</span></td><td>Unidad base de espaciado</td></tr>
+          <tr><td class="token-name">--sp-8</td><td class="token-value">32px</td><td><span class="token-cat cat-space">Espacio</span></td><td>Espacio de sección</td></tr>
+          <tr><td class="token-name">--sp-16</td><td class="token-value">64px</td><td><span class="token-cat cat-space">Espacio</span></td><td>Padding de secciones</td></tr>
+          <tr><td class="token-name">--r-md</td><td class="token-value">8px</td><td><span class="token-cat cat-radius">Radio</span></td><td>Componentes pequeños</td></tr>
+          <tr><td class="token-name">--r-xl</td><td class="token-value">16px</td><td><span class="token-cat cat-radius">Radio</span></td><td>Cards y paneles</td></tr>
+          <tr><td class="token-name">--r-2xl</td><td class="token-value">24px</td><td><span class="token-cat cat-radius">Radio</span></td><td>Contenedores hero</td></tr>
+          <tr><td class="token-name">--r-full</td><td class="token-value">9999px</td><td><span class="token-cat cat-radius">Radio</span></td><td>Pills y badges</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     ★★★ NUEVA SECCIÓN: PALETA SEMÁNTICA LIGHT/DARK ★★★
+════════════════════════════════════════════════════ -->
+<section class="section section-surface">
+  <div class="page-wrapper">
+    <div class="sec-header">
+      <p class="sec-label">12 — Theming</p>
+      <h2 class="sec-title">Sistema <span>Light & Dark</span></h2>
+      <p class="sec-desc">
+        Tokens semánticos: la capa intermedia entre la paleta raw y los componentes. Cada token tiene un valor en Light y otro en Dark, y todos los componentes los usan automáticamente. <strong>Activa el switch arriba a la derecha</strong> para ver cómo cambia toda la guía.
+      </p>
+    </div>
+
+    <div class="theme-paletas">
+
+      <!-- ─── Paleta LIGHT ─── -->
+      <div class="theme-paleta theme-paleta-light">
+        <div class="theme-paleta-header">
+          <div class="theme-paleta-title">Light Mode</div>
+          <div class="theme-paleta-tag">:root</div>
+        </div>
+
+        <!-- Backgrounds -->
+        <div class="theme-token-group">
+          <div class="theme-token-group-title">Backgrounds</div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#F6F5FF;"></div><div class="theme-token-info"><div class="theme-token-name">--bg-page</div><div class="theme-token-value">#F6F5FF</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#FFFFFF;"></div><div class="theme-token-info"><div class="theme-token-name">--bg-surface</div><div class="theme-token-value">#FFFFFF</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#F4F4F2;"></div><div class="theme-token-info"><div class="theme-token-name">--bg-subtle</div><div class="theme-token-value">#F4F4F2</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#0D0D0D;"></div><div class="theme-token-info"><div class="theme-token-name">--bg-inverse</div><div class="theme-token-value">#0D0D0D</div></div></div>
+        </div>
+
+        <!-- Text -->
+        <div class="theme-token-group">
+          <div class="theme-token-group-title">Text</div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#0D0D0D;"></div><div class="theme-token-info"><div class="theme-token-name">--text-primary</div><div class="theme-token-value">#0D0D0D</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#444444;"></div><div class="theme-token-info"><div class="theme-token-name">--text-secondary</div><div class="theme-token-value">#444444</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#888888;"></div><div class="theme-token-info"><div class="theme-token-name">--text-muted</div><div class="theme-token-value">#888888</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#C8C8C8;"></div><div class="theme-token-info"><div class="theme-token-name">--text-faint</div><div class="theme-token-value">#C8C8C8</div></div></div>
+        </div>
+
+        <!-- Brand -->
+        <div class="theme-token-group">
+          <div class="theme-token-group-title">Brand · Primary = Purple</div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#5B4FF0;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-primary</div><div class="theme-token-value">#5B4FF0 · purple</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#3B30C0;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-primary-hover</div><div class="theme-token-value">#3B30C0</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#EAE8FD;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-primary-soft</div><div class="theme-token-value">#EAE8FD</div></div></div>
+        </div>
+
+        <div class="theme-token-group">
+          <div class="theme-token-group-title">Brand · Accent = Lime</div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#C2E53A;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-accent</div><div class="theme-token-value">#C2E53A · lime</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#9AB82A;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-accent-hover</div><div class="theme-token-value">#9AB82A</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#EEF6CC;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-accent-soft</div><div class="theme-token-value">#EEF6CC</div></div></div>
+        </div>
+
+        <!-- Demo botones light -->
+        <div class="theme-paleta-demo">
+          <div class="theme-paleta-demo-title">Demo · botones</div>
+          <div class="theme-paleta-demo-row">
+            <button class="theme-mini-btn theme-mini-btn-primary">Primary</button>
+            <button class="theme-mini-btn theme-mini-btn-accent">Accent</button>
+            <button class="theme-mini-btn theme-mini-btn-outline">Outline</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ─── Paleta DARK ─── -->
+      <div class="theme-paleta theme-paleta-dark">
+        <div class="theme-paleta-header">
+          <div class="theme-paleta-title">Dark Mode</div>
+          <div class="theme-paleta-tag">.dark</div>
+        </div>
+
+        <!-- Backgrounds -->
+        <div class="theme-token-group">
+          <div class="theme-token-group-title">Backgrounds</div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#0A0A12;"></div><div class="theme-token-info"><div class="theme-token-name">--bg-page</div><div class="theme-token-value">#0A0A12</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#15151F;"></div><div class="theme-token-info"><div class="theme-token-name">--bg-surface</div><div class="theme-token-value">#15151F</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#1A1A24;"></div><div class="theme-token-info"><div class="theme-token-name">--bg-subtle</div><div class="theme-token-value">#1A1A24</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#FFFFFF;"></div><div class="theme-token-info"><div class="theme-token-name">--bg-inverse</div><div class="theme-token-value">#FFFFFF</div></div></div>
+        </div>
+
+        <!-- Text -->
+        <div class="theme-token-group">
+          <div class="theme-token-group-title">Text</div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#F4F4F2;"></div><div class="theme-token-info"><div class="theme-token-name">--text-primary</div><div class="theme-token-value">#F4F4F2</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#C8C8C8;"></div><div class="theme-token-info"><div class="theme-token-name">--text-secondary</div><div class="theme-token-value">#C8C8C8</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#888888;"></div><div class="theme-token-info"><div class="theme-token-name">--text-muted</div><div class="theme-token-value">#888888</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#555555;"></div><div class="theme-token-info"><div class="theme-token-name">--text-faint</div><div class="theme-token-value">#555555</div></div></div>
+        </div>
+
+        <!-- Brand INVERTIDO -->
+        <div class="theme-token-group">
+          <div class="theme-token-group-title">Brand · Primary = Lime ⚡</div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#C2E53A;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-primary</div><div class="theme-token-value">#C2E53A · lime</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#D9EE79;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-primary-hover</div><div class="theme-token-value">#D9EE79</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:rgba(194,229,58,0.12); border-color: rgba(194,229,58,0.3);"></div><div class="theme-token-info"><div class="theme-token-name">--brand-primary-soft</div><div class="theme-token-value">lime / 12%</div></div></div>
+        </div>
+
+        <div class="theme-token-group">
+          <div class="theme-token-group-title">Brand · Accent = Purple-mid</div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#9B91F5;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-accent</div><div class="theme-token-value">#9B91F5</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:#5B4FF0;"></div><div class="theme-token-info"><div class="theme-token-name">--brand-accent-hover</div><div class="theme-token-value">#5B4FF0</div></div></div>
+          <div class="theme-token-row"><div class="theme-token-chip" style="background:rgba(155,145,245,0.15);"></div><div class="theme-token-info"><div class="theme-token-name">--brand-accent-soft</div><div class="theme-token-value">purple-mid / 15%</div></div></div>
+        </div>
+
+        <!-- Demo botones dark -->
+        <div class="theme-paleta-demo">
+          <div class="theme-paleta-demo-title">Demo · botones</div>
+          <div class="theme-paleta-demo-row">
+            <button class="theme-mini-btn theme-mini-btn-primary">Primary</button>
+            <button class="theme-mini-btn theme-mini-btn-accent">Accent</button>
+            <button class="theme-mini-btn theme-mini-btn-outline">Outline</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ── Bloque conceptual: cómo se usa ── -->
+    <div class="sec-header" style="margin-top: 64px;">
+      <p class="sec-label">12.1 — Filosofía</p>
+      <h2 class="sec-title" style="font-size: 22px;">Inversión <span>cromática</span> intencional</h2>
+      <p class="sec-desc">
+        En light, el <strong>purple</strong> es el protagonista (color de marca primario sobre fondo claro). En dark, el <strong>lime</strong> toma el liderazgo porque destaca mucho mejor sobre negro y mantiene el "feeling IA" característico de QUANTIA. Los hovers también se invierten: el botón primary en dark <strong>se ilumina con lime claro</strong>, y el accent <strong>vuelve al purple corporativo</strong> en hover.
+      </p>
+    </div>
+
+
+    <!-- ── Bloque Tailwind v4: index.css completo ── -->
+    <div class="sec-header" style="margin-top: 48px;">
+      <p class="sec-label">12.2 — Implementación</p>
+      <h2 class="sec-title" style="font-size: 22px;">Estructura del <span>index.css</span> (Tailwind v4)</h2>
+      <p class="sec-desc">
+        En Tailwind v4 ya no existen <code class="t-mono">tailwind.config.js</code> ni <code class="t-mono">darkMode: 'class'</code>. La configuración vive en CSS. El patrón estándar tiene <strong>tres bloques</strong>: <code class="t-mono">@custom-variant</code> para activar la clase <code class="t-mono">.dark</code>, <code class="t-mono">:root</code> y <code class="t-mono">.dark</code> para los valores que cambian, y <code class="t-mono">@theme inline</code> como puente para que Tailwind genere las utilities (<code class="t-mono">bg-surface</code>, <code class="t-mono">text-primary</code>, <code class="t-mono">bg-brand</code>...). <strong>Un solo nombre de variable por token</strong> — el modo dark lo sobreescribe.
+      </p>
+    </div>
+
+    <div class="tailwind-snippet">
+<span class="tw-comment">/* ══════════════════════════════════════════════════════════════════
+   QUANTIA · index.css
+   Tailwind v4 · Sistema completo Light/Dark
+   Listo para copiar y pegar
+   ══════════════════════════════════════════════════════════════════ */</span>
+
+<span class="tw-keyword">@import</span> <span class="tw-class">"tailwindcss"</span>;
+
+<span class="tw-comment">/* Fuentes corporativas */</span>
+<span class="tw-keyword">@import</span> url(<span class="tw-class">"https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;family=Nunito+Sans:wght@400;500;600;700&amp;display=swap"</span>);
+
+<span class="tw-comment">/* Activar modo oscuro vía clase .dark en &lt;html&gt; (sustituye al viejo darkMode:'class') */</span>
+<span class="tw-keyword">@custom-variant</span> dark (&amp;:where(.dark, .dark *));
+
+
+<span class="tw-comment">/* ──────────────────────────────────────────────────────────────────
+   1. TOKENS ESTÁTICOS · no cambian con el tema
+   ────────────────────────────────────────────────────────────────── */</span>
+<span class="tw-keyword">@theme</span> {
+  <span class="tw-comment">/* Familias tipográficas */</span>
+  --font-display:  <span class="tw-class">"Nunito"</span>, sans-serif;       <span class="tw-comment">/* titulares */</span>
+  --font-sans:     <span class="tw-class">"Nunito Sans"</span>, sans-serif;  <span class="tw-comment">/* cuerpo y UI  */</span>
+  --font-mono:     <span class="tw-class">ui-monospace, "JetBrains Mono", monospace</span>;
+
+  <span class="tw-comment">/* Escala tipográfica */</span>
+  --text-xs:    <span class="tw-class">0.75rem</span>;     <span class="tw-comment">/* 12px · captions, micro-labels   */</span>
+  --text-sm:    <span class="tw-class">0.875rem</span>;    <span class="tw-comment">/* 14px · UI secundario             */</span>
+  --text-base:  <span class="tw-class">1rem</span>;        <span class="tw-comment">/* 16px · cuerpo                    */</span>
+  --text-lg:    <span class="tw-class">1.125rem</span>;    <span class="tw-comment">/* 18px · lead                      */</span>
+  --text-xl:    <span class="tw-class">1.5rem</span>;      <span class="tw-comment">/* 24px · h3                        */</span>
+  --text-2xl:   <span class="tw-class">2.25rem</span>;     <span class="tw-comment">/* 36px · h2                        */</span>
+  --text-3xl:   <span class="tw-class">3rem</span>;        <span class="tw-comment">/* 48px · h1                        */</span>
+  --text-4xl:   <span class="tw-class">4rem</span>;        <span class="tw-comment">/* 64px · display / hero            */</span>
+
+  <span class="tw-comment">/* Pesos */</span>
+  --font-weight-normal:    <span class="tw-class">400</span>;
+  --font-weight-medium:    <span class="tw-class">500</span>;
+  --font-weight-semibold:  <span class="tw-class">600</span>;
+  --font-weight-bold:      <span class="tw-class">700</span>;
+  --font-weight-black:     <span class="tw-class">900</span>;
+
+  <span class="tw-comment">/* Espaciado · escala 4px */</span>
+  --spacing: <span class="tw-class">0.25rem</span>;  <span class="tw-comment">/* base de la escala spacing-* de Tailwind */</span>
+
+  <span class="tw-comment">/* Radios */</span>
+  --radius-sm:    <span class="tw-class">4px</span>;
+  --radius-md:    <span class="tw-class">8px</span>;
+  --radius-lg:    <span class="tw-class">12px</span>;
+  --radius-xl:    <span class="tw-class">16px</span>;
+  --radius-2xl:   <span class="tw-class">24px</span>;
+  --radius-full:  <span class="tw-class">9999px</span>;
+
+  <span class="tw-comment">/* Transiciones */</span>
+  --duration-fast:   <span class="tw-class">150ms</span>;
+  --duration-base:   <span class="tw-class">220ms</span>;
+  --duration-theme:  <span class="tw-class">320ms</span>;
+  --ease-standard:   <span class="tw-class">cubic-bezier(0.4, 0, 0.2, 1)</span>;
+
+  <span class="tw-comment">/* Layout */</span>
+  --header-height:  <span class="tw-class">64px</span>;
+  --container-max:  <span class="tw-class">1200px</span>;
+}
+
+
+<span class="tw-comment">/* ──────────────────────────────────────────────────────────────────
+   2. PALETA RAW · marca QUANTIA · NO usar directa en componentes
+   Solo se referencian desde la capa semántica de abajo.
+   ────────────────────────────────────────────────────────────────── */</span>
+<span class="tw-tag">:root</span> {
+  <span class="tw-comment">/* Purple — color principal corporativo */</span>
+  --q-purple-deeper:  <span class="tw-class">#251D9A</span>;
+  --q-purple-dark:    <span class="tw-class">#3B30C0</span>;
+  --q-purple:         <span class="tw-class">#5B4FF0</span>;
+  --q-purple-mid:     <span class="tw-class">#9B91F5</span>;
+  --q-purple-light:   <span class="tw-class">#EAE8FD</span>;
+
+  <span class="tw-comment">/* Lime — acento / IA */</span>
+  --q-lime-darker:    <span class="tw-class">#7AB820</span>;
+  --q-lime-dark:      <span class="tw-class">#9AB82A</span>;
+  --q-lime:           <span class="tw-class">#C2E53A</span>;
+  --q-lime-light:     <span class="tw-class">#D9EE79</span>;
+  --q-lime-pale:      <span class="tw-class">#EEF6CC</span>;
+
+  <span class="tw-comment">/* Neutros claros */</span>
+  --q-white:          <span class="tw-class">#FFFFFF</span>;
+  --q-gray-soft:      <span class="tw-class">#F4F4F2</span>;
+  --q-gray-light:     <span class="tw-class">#C8C8C8</span>;
+  --q-gray:           <span class="tw-class">#888888</span>;
+  --q-gray-dark:      <span class="tw-class">#444444</span>;
+
+  <span class="tw-comment">/* Neutros oscuros */</span>
+  --q-black:          <span class="tw-class">#0D0D0D</span>;
+  --q-black-soft:     <span class="tw-class">#1A1A1A</span>;
+  --q-black-deep:     <span class="tw-class">#0A0A12</span>;
+  --q-surface-dark:   <span class="tw-class">#15151F</span>;
+
+  <span class="tw-comment">/* Estados (raw) */</span>
+  --q-success:    <span class="tw-class">#22C55E</span>;
+  --q-warning:    <span class="tw-class">#F59E0B</span>;
+  --q-danger:     <span class="tw-class">#EF4444</span>;
+  --q-info:       <span class="tw-class">#3B82F6</span>;
+}
+
+
+<span class="tw-comment">/* ──────────────────────────────────────────────────────────────────
+   3. TOKENS SEMÁNTICOS · UN nombre, dos valores
+   :root = light · .dark sobreescribe
+   Estos son los que usan TUS componentes.
+   ────────────────────────────────────────────────────────────────── */</span>
+<span class="tw-tag">:root</span> {
+  <span class="tw-comment">/* — Backgrounds — */</span>
+  --bg-page:        <span class="tw-class">#F6F5FF</span>;
+  --bg-surface:     <span class="tw-class">var(--q-white)</span>;
+  --bg-subtle:      <span class="tw-class">var(--q-gray-soft)</span>;
+  --bg-elevated:    <span class="tw-class">var(--q-white)</span>;
+  --bg-inverse:     <span class="tw-class">var(--q-black)</span>;
+
+  <span class="tw-comment">/* — Texto — */</span>
+  --text-primary:    <span class="tw-class">var(--q-black)</span>;
+  --text-secondary:  <span class="tw-class">var(--q-gray-dark)</span>;
+  --text-muted:      <span class="tw-class">var(--q-gray)</span>;
+  --text-faint:      <span class="tw-class">var(--q-gray-light)</span>;
+  --text-on-brand:   <span class="tw-class">var(--q-white)</span>;       <span class="tw-comment">/* texto sobre botón primary */</span>
+  --text-on-accent:  <span class="tw-class">var(--q-black)</span>;       <span class="tw-comment">/* texto sobre lime */</span>
+  --text-on-inverse: <span class="tw-class">var(--q-white)</span>;       <span class="tw-comment">/* texto sobre fondo negro */</span>
+
+  <span class="tw-comment">/* — Bordes — */</span>
+  --border-subtle:   <span class="tw-class">rgba(91, 79, 240, 0.08)</span>;
+  --border-default:  <span class="tw-class">rgba(91, 79, 240, 0.20)</span>;
+  --border-strong:   <span class="tw-class">var(--q-purple)</span>;
+
+  <span class="tw-comment">/* — Brand · primario = purple en light — */</span>
+  --brand-primary:        <span class="tw-class">var(--q-purple)</span>;
+  --brand-primary-hover:  <span class="tw-class">var(--q-purple-dark)</span>;
+  --brand-primary-active: <span class="tw-class">var(--q-purple-deeper)</span>;
+  --brand-primary-soft:   <span class="tw-class">var(--q-purple-light)</span>;
+
+  <span class="tw-comment">/* — Brand · acento = lime en light — */</span>
+  --brand-accent:         <span class="tw-class">var(--q-lime)</span>;
+  --brand-accent-hover:   <span class="tw-class">var(--q-lime-dark)</span>;
+  --brand-accent-soft:    <span class="tw-class">var(--q-lime-pale)</span>;
+
+  <span class="tw-comment">/* — Focus ring — */</span>
+  --focus-ring:    <span class="tw-class">rgba(91, 79, 240, 0.25)</span>;
+
+  <span class="tw-comment">/* — Sombras — */</span>
+  --shadow-sm:     <span class="tw-class">0 1px 2px rgba(13, 13, 13, 0.06)</span>;
+  --shadow-md:     <span class="tw-class">0 4px 12px rgba(13, 13, 13, 0.10)</span>;
+  --shadow-lg:     <span class="tw-class">0 12px 32px rgba(13, 13, 13, 0.14)</span>;
+  --shadow-brand:  <span class="tw-class">0 8px 24px rgba(91, 79, 240, 0.28)</span>;
+  --shadow-accent: <span class="tw-class">0 8px 24px rgba(194, 229, 58, 0.32)</span>;
+
+  <span class="tw-comment">/* — Estados (semánticos: fondo + texto + borde) — */</span>
+  --success-fg:    <span class="tw-class">#15803D</span>;
+  --success-bg:    <span class="tw-class">#DCFCE7</span>;
+  --success-border:<span class="tw-class">#86EFAC</span>;
+
+  --warning-fg:    <span class="tw-class">#B45309</span>;
+  --warning-bg:    <span class="tw-class">#FEF3C7</span>;
+  --warning-border:<span class="tw-class">#FCD34D</span>;
+
+  --danger-fg:     <span class="tw-class">#B91C1C</span>;
+  --danger-bg:     <span class="tw-class">#FEE2E2</span>;
+  --danger-border: <span class="tw-class">#FCA5A5</span>;
+
+  --info-fg:       <span class="tw-class">#1D4ED8</span>;
+  --info-bg:       <span class="tw-class">#DBEAFE</span>;
+  --info-border:   <span class="tw-class">#93C5FD</span>;
+}
+
+<span class="tw-tag">.dark</span> {
+  <span class="tw-comment">/* — Backgrounds — */</span>
+  --bg-page:        <span class="tw-class">var(--q-black-deep)</span>;
+  --bg-surface:     <span class="tw-class">var(--q-surface-dark)</span>;
+  --bg-subtle:      <span class="tw-class">#1A1A24</span>;
+  --bg-elevated:    <span class="tw-class">#1F1F2C</span>;
+  --bg-inverse:     <span class="tw-class">var(--q-white)</span>;
+
+  <span class="tw-comment">/* — Texto — */</span>
+  --text-primary:    <span class="tw-class">var(--q-gray-soft)</span>;
+  --text-secondary:  <span class="tw-class">var(--q-gray-light)</span>;
+  --text-muted:      <span class="tw-class">var(--q-gray)</span>;
+  --text-faint:      <span class="tw-class">#555555</span>;
+  --text-on-brand:   <span class="tw-class">var(--q-black)</span>;       <span class="tw-comment">/* sobre lime → negro */</span>
+  --text-on-accent:  <span class="tw-class">var(--q-white)</span>;       <span class="tw-comment">/* sobre purple-mid → blanco */</span>
+  --text-on-inverse: <span class="tw-class">var(--q-black)</span>;
+
+  <span class="tw-comment">/* — Bordes — */</span>
+  --border-subtle:   <span class="tw-class">rgba(255, 255, 255, 0.06)</span>;
+  --border-default:  <span class="tw-class">rgba(194, 229, 58, 0.18)</span>;
+  --border-strong:   <span class="tw-class">var(--q-lime)</span>;
+
+  <span class="tw-comment">/* — ⚡ INVERSIÓN CROMÁTICA · brand pasa a lime — */</span>
+  --brand-primary:        <span class="tw-class">var(--q-lime)</span>;
+  --brand-primary-hover:  <span class="tw-class">var(--q-lime-light)</span>;     <span class="tw-comment">/* hover ilumina */</span>
+  --brand-primary-active: <span class="tw-class">var(--q-lime-dark)</span>;
+  --brand-primary-soft:   <span class="tw-class">rgba(194, 229, 58, 0.12)</span>;
+
+  <span class="tw-comment">/* — Accent pasa a purple-mid — */</span>
+  --brand-accent:         <span class="tw-class">var(--q-purple-mid)</span>;
+  --brand-accent-hover:   <span class="tw-class">var(--q-purple)</span>;        <span class="tw-comment">/* vuelve al purple base */</span>
+  --brand-accent-soft:    <span class="tw-class">rgba(155, 145, 245, 0.15)</span>;
+
+  <span class="tw-comment">/* — Focus / sombras — */</span>
+  --focus-ring:    <span class="tw-class">rgba(194, 229, 58, 0.35)</span>;
+  --shadow-sm:     <span class="tw-class">0 1px 2px rgba(0, 0, 0, 0.40)</span>;
+  --shadow-md:     <span class="tw-class">0 4px 12px rgba(0, 0, 0, 0.50)</span>;
+  --shadow-lg:     <span class="tw-class">0 12px 32px rgba(0, 0, 0, 0.60)</span>;
+  --shadow-brand:  <span class="tw-class">0 8px 24px rgba(194, 229, 58, 0.20)</span>;
+  --shadow-accent: <span class="tw-class">0 8px 24px rgba(155, 145, 245, 0.25)</span>;
+
+  <span class="tw-comment">/* — Estados (atenuados sobre fondo oscuro) — */</span>
+  --success-fg:    <span class="tw-class">#86EFAC</span>;
+  --success-bg:    <span class="tw-class">rgba(34, 197, 94, 0.12)</span>;
+  --success-border:<span class="tw-class">rgba(34, 197, 94, 0.30)</span>;
+
+  --warning-fg:    <span class="tw-class">#FCD34D</span>;
+  --warning-bg:    <span class="tw-class">rgba(245, 158, 11, 0.12)</span>;
+  --warning-border:<span class="tw-class">rgba(245, 158, 11, 0.30)</span>;
+
+  --danger-fg:     <span class="tw-class">#FCA5A5</span>;
+  --danger-bg:     <span class="tw-class">rgba(239, 68, 68, 0.12)</span>;
+  --danger-border: <span class="tw-class">rgba(239, 68, 68, 0.30)</span>;
+
+  --info-fg:       <span class="tw-class">#93C5FD</span>;
+  --info-bg:       <span class="tw-class">rgba(59, 130, 246, 0.12)</span>;
+  --info-border:   <span class="tw-class">rgba(59, 130, 246, 0.30)</span>;
+}
+
+
+<span class="tw-comment">/* ──────────────────────────────────────────────────────────────────
+   4. PUENTE · expone semánticos como utilities Tailwind
+   Genera bg-surface, text-primary, bg-brand-primary, border-default…
+   ────────────────────────────────────────────────────────────────── */</span>
+<span class="tw-keyword">@theme inline</span> {
+  --color-bg-page:              <span class="tw-class">var(--bg-page)</span>;
+  --color-bg-surface:           <span class="tw-class">var(--bg-surface)</span>;
+  --color-bg-subtle:            <span class="tw-class">var(--bg-subtle)</span>;
+  --color-bg-elevated:          <span class="tw-class">var(--bg-elevated)</span>;
+  --color-bg-inverse:           <span class="tw-class">var(--bg-inverse)</span>;
+
+  --color-text-primary:         <span class="tw-class">var(--text-primary)</span>;
+  --color-text-secondary:       <span class="tw-class">var(--text-secondary)</span>;
+  --color-text-muted:           <span class="tw-class">var(--text-muted)</span>;
+  --color-text-faint:           <span class="tw-class">var(--text-faint)</span>;
+  --color-text-on-brand:        <span class="tw-class">var(--text-on-brand)</span>;
+  --color-text-on-accent:       <span class="tw-class">var(--text-on-accent)</span>;
+  --color-text-on-inverse:      <span class="tw-class">var(--text-on-inverse)</span>;
+
+  --color-border-subtle:        <span class="tw-class">var(--border-subtle)</span>;
+  --color-border-default:       <span class="tw-class">var(--border-default)</span>;
+  --color-border-strong:        <span class="tw-class">var(--border-strong)</span>;
+
+  --color-brand-primary:        <span class="tw-class">var(--brand-primary)</span>;
+  --color-brand-primary-hover:  <span class="tw-class">var(--brand-primary-hover)</span>;
+  --color-brand-primary-active: <span class="tw-class">var(--brand-primary-active)</span>;
+  --color-brand-primary-soft:   <span class="tw-class">var(--brand-primary-soft)</span>;
+
+  --color-brand-accent:         <span class="tw-class">var(--brand-accent)</span>;
+  --color-brand-accent-hover:   <span class="tw-class">var(--brand-accent-hover)</span>;
+  --color-brand-accent-soft:    <span class="tw-class">var(--brand-accent-soft)</span>;
+
+  --color-success-fg:           <span class="tw-class">var(--success-fg)</span>;
+  --color-success-bg:           <span class="tw-class">var(--success-bg)</span>;
+  --color-warning-fg:           <span class="tw-class">var(--warning-fg)</span>;
+  --color-warning-bg:           <span class="tw-class">var(--warning-bg)</span>;
+  --color-danger-fg:            <span class="tw-class">var(--danger-fg)</span>;
+  --color-danger-bg:            <span class="tw-class">var(--danger-bg)</span>;
+  --color-info-fg:              <span class="tw-class">var(--info-fg)</span>;
+  --color-info-bg:              <span class="tw-class">var(--info-bg)</span>;
+
+  <span class="tw-comment">/* Sombras como utilities (shadow-brand, shadow-accent…) */</span>
+  --shadow-brand:   <span class="tw-class">var(--shadow-brand)</span>;
+  --shadow-accent:  <span class="tw-class">var(--shadow-accent)</span>;
+}
+
+
+<span class="tw-comment">/* ──────────────────────────────────────────────────────────────────
+   5. ESTILOS BASE · aplicados al &lt;body&gt;, headings, links
+   ────────────────────────────────────────────────────────────────── */</span>
+<span class="tw-keyword">@layer base</span> {
+  <span class="tw-tag">html</span> {
+    background-color: <span class="tw-class">var(--bg-page)</span>;
+    color: <span class="tw-class">var(--text-primary)</span>;
+    transition: <span class="tw-class">background-color var(--duration-theme) var(--ease-standard),
+                color var(--duration-theme) var(--ease-standard)</span>;
+  }
+  <span class="tw-tag">body</span> {
+    font-family: <span class="tw-class">var(--font-sans)</span>;
+    font-size:   <span class="tw-class">var(--text-base)</span>;
+    line-height: <span class="tw-class">1.6</span>;
+  }
+  <span class="tw-tag">h1</span>, <span class="tw-tag">h2</span>, <span class="tw-tag">h3</span>, <span class="tw-tag">h4</span> {
+    font-family: <span class="tw-class">var(--font-display)</span>;
+    font-weight: <span class="tw-class">800</span>;
+    color:       <span class="tw-class">var(--text-primary)</span>;
+    line-height: <span class="tw-class">1.15</span>;
+  }
+  <span class="tw-tag">a</span> {
+    color: <span class="tw-class">var(--brand-primary)</span>;
+    text-decoration: <span class="tw-class">none</span>;
+    transition: <span class="tw-class">color var(--duration-fast) var(--ease-standard)</span>;
+  }
+  <span class="tw-tag">a:hover</span> { color: <span class="tw-class">var(--brand-primary-hover)</span>; }
+
+  <span class="tw-tag">:focus-visible</span> {
+    outline: <span class="tw-class">2px solid var(--brand-primary)</span>;
+    outline-offset: <span class="tw-class">2px</span>;
+    box-shadow: <span class="tw-class">0 0 0 4px var(--focus-ring)</span>;
+  }
+}
+
+
+<span class="tw-comment">/* ──────────────────────────────────────────────────────────────────
+   6. EJEMPLO DE USO EN COMPONENTES
+   Las MISMAS clases sirven en light y dark — los tokens cambian solos.
+   ────────────────────────────────────────────────────────────────── */</span>
+&lt;<span class="tw-tag">button</span> <span class="tw-prefix">class</span>=<span class="tw-class">"bg-brand-primary hover:bg-brand-primary-hover text-on-brand
+                  px-6 py-3 rounded-lg shadow-brand font-semibold transition"</span>&gt;
+  Contactar
+&lt;/<span class="tw-tag">button</span>&gt;
+
+&lt;<span class="tw-tag">article</span> <span class="tw-prefix">class</span>=<span class="tw-class">"bg-surface text-primary border border-border-default
+                   rounded-xl p-6 shadow-md"</span>&gt;
+  &lt;<span class="tw-tag">h3</span> <span class="tw-prefix">class</span>=<span class="tw-class">"text-2xl mb-2"</span>&gt;Card que se adapta sola al tema&lt;/<span class="tw-tag">h3</span>&gt;
+  &lt;<span class="tw-tag">p</span>  <span class="tw-prefix">class</span>=<span class="tw-class">"text-secondary"</span>&gt;Sin escribir &lt;code&gt;dark:&lt;/code&gt; en cada utility.&lt;/<span class="tw-tag">p</span>&gt;
+&lt;/<span class="tw-tag">article</span>&gt;
+    </div>
+
+
+    <!-- ── 12.3 — Carga de fuentes (Vite vs Next.js) ── -->
+    <div class="sec-header" style="margin-top: 48px;">
+      <p class="sec-label">12.3 — Carga de fuentes</p>
+      <h2 class="sec-title" style="font-size: 22px;">Cómo importar <span>Nunito</span> según el framework</h2>
+      <p class="sec-desc">
+        Importar las fuentes con <code class="t-mono">@import url(...)</code> dentro del CSS funciona, pero <strong>bloquea el render</strong> hasta que el navegador descargue y parsee el CSS antes de pedir las fuentes. La recomendación estándar es cargarlas desde el HTML/layout para permitir <code class="t-mono">preconnect</code> y descarga en paralelo. Quita el <code class="t-mono">@import</code> de Google Fonts del <code class="t-mono">index.css</code> si usas alguna de estas dos opciones.
+      </p>
+    </div>
+
+    <div class="font-recommend-grid">
+
+      <!-- ─── Vite / HTML plano ─── -->
+      <div class="font-recommend-card">
+        <div class="font-recommend-header">
+          <span class="font-recommend-badge">⚡ Vite · CRA · HTML</span>
+        </div>
+        <h3 class="font-recommend-title">Tag &lt;link&gt; en el &lt;head&gt; con preconnect</h3>
+        <p class="font-recommend-desc">
+          Coloca los preconnect y el stylesheet en <code class="t-mono">index.html</code>. El navegador abre la conexión TLS antes de necesitar la fuente y descarga en paralelo con el resto de assets.
+        </p>
+        <div class="font-recommend-code"><span class="tw-comment">&lt;!-- index.html --&gt;</span>
+&lt;<span class="tw-tag">head</span>&gt;
+  &lt;<span class="tw-tag">link</span> <span class="tw-prefix">rel</span>=<span class="tw-class">"preconnect"</span> <span class="tw-prefix">href</span>=<span class="tw-class">"https://fonts.googleapis.com"</span>&gt;
+  &lt;<span class="tw-tag">link</span> <span class="tw-prefix">rel</span>=<span class="tw-class">"preconnect"</span> <span class="tw-prefix">href</span>=<span class="tw-class">"https://fonts.gstatic.com"</span> <span class="tw-prefix">crossorigin</span>&gt;
+  &lt;<span class="tw-tag">link</span>
+    <span class="tw-prefix">rel</span>=<span class="tw-class">"stylesheet"</span>
+    <span class="tw-prefix">href</span>=<span class="tw-class">"https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;family=Nunito+Sans:wght@400;500;600;700&amp;display=swap"</span>
+  &gt;
+&lt;/<span class="tw-tag">head</span>&gt;</div>
+        <p class="font-recommend-note">
+          En <code class="t-mono">index.css</code> las fuentes ya están disponibles globalmente. <strong>No</strong> hace falta el <code class="t-mono">@import url(...)</code>. El <code class="t-mono">@theme</code> sigue declarando <code class="t-mono">--font-display</code> y <code class="t-mono">--font-sans</code> como antes.
+        </p>
+      </div>
+
+      <!-- ─── Next.js ─── -->
+      <div class="font-recommend-card">
+        <div class="font-recommend-header">
+          <span class="font-recommend-badge">▲ Next.js (App Router)</span>
+        </div>
+        <h3 class="font-recommend-title">next/font/google · auto-hostado y sin layout shift</h3>
+        <p class="font-recommend-desc">
+          Next descarga las fuentes en build time, las sirve desde tu propio dominio (cero requests a Google en producción) y previene el flash automáticamente. Es la opción recomendada por el equipo de Next.
+        </p>
+        <div class="font-recommend-code"><span class="tw-comment">// app/layout.jsx</span>
+<span class="tw-keyword">import</span> { <span class="tw-tag">Nunito</span>, <span class="tw-tag">Nunito_Sans</span> } <span class="tw-keyword">from</span> <span class="tw-class">"next/font/google"</span>;
+
+<span class="tw-keyword">const</span> <span class="tw-tag">nunito</span> = Nunito({
+  subsets: [<span class="tw-class">"latin"</span>],
+  weight:  [<span class="tw-class">"600"</span>,<span class="tw-class">"700"</span>,<span class="tw-class">"800"</span>,<span class="tw-class">"900"</span>],
+  variable: <span class="tw-class">"--font-display"</span>,
+});
+
+<span class="tw-keyword">const</span> <span class="tw-tag">nunitoSans</span> = Nunito_Sans({
+  subsets: [<span class="tw-class">"latin"</span>],
+  weight:  [<span class="tw-class">"400"</span>,<span class="tw-class">"500"</span>,<span class="tw-class">"600"</span>,<span class="tw-class">"700"</span>],
+  variable: <span class="tw-class">"--font-sans"</span>,
+});
+
+<span class="tw-keyword">export default function</span> <span class="tw-tag">RootLayout</span>({ children }) {
+  <span class="tw-keyword">return</span> (
+    &lt;<span class="tw-tag">html</span> <span class="tw-prefix">lang</span>=<span class="tw-class">"es"</span>
+          <span class="tw-prefix">className</span>={`${nunito.variable} ${nunitoSans.variable}`}&gt;
+      &lt;<span class="tw-tag">body</span>&gt;{children}&lt;/<span class="tw-tag">body</span>&gt;
+    &lt;/<span class="tw-tag">html</span>&gt;
+  );
+}</div>
+        <p class="font-recommend-note">
+          Next inyecta <code class="t-mono">--font-display</code> y <code class="t-mono">--font-sans</code> como CSS vars en el <code class="t-mono">&lt;html&gt;</code>. En <code class="t-mono">@theme</code> no hace falta declararlas, ya las hereda. <strong>Quita</strong> tanto el <code class="t-mono">@import url(...)</code> como las declaraciones <code class="t-mono">--font-*</code> del <code class="t-mono">@theme</code> si vas por esta vía.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- ── Tabla de tokens semánticos ── -->
+    <div class="sec-header" style="margin-top: 48px;">
+      <p class="sec-label">12.4 — Referencia</p>
+      <h2 class="sec-title" style="font-size: 22px;">Tabla de <span>tokens semánticos</span></h2>
+    </div>
+
+    <div class="tokens-wrap">
+      <table class="tokens-table">
+        <thead>
+          <tr><th>Token</th><th>Light</th><th>Dark</th><th>Uso</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="token-name">--bg-page</td><td class="token-value">#F6F5FF</td><td class="token-value">#0A0A12</td><td><span class="token-cat cat-semantic">Background</span></td></tr>
+          <tr><td class="token-name">--bg-surface</td><td class="token-value">#FFFFFF</td><td class="token-value">#15151F</td><td><span class="token-cat cat-semantic">Background</span></td></tr>
+          <tr><td class="token-name">--bg-subtle</td><td class="token-value">#F4F4F2</td><td class="token-value">#1A1A24</td><td><span class="token-cat cat-semantic">Background</span></td></tr>
+          <tr><td class="token-name">--bg-inverse</td><td class="token-value">#0D0D0D</td><td class="token-value">#FFFFFF</td><td><span class="token-cat cat-semantic">Background</span></td></tr>
+          <tr><td class="token-name">--text-primary</td><td class="token-value">#0D0D0D</td><td class="token-value">#F4F4F2</td><td><span class="token-cat cat-semantic">Text</span></td></tr>
+          <tr><td class="token-name">--text-secondary</td><td class="token-value">#444444</td><td class="token-value">#C8C8C8</td><td><span class="token-cat cat-semantic">Text</span></td></tr>
+          <tr><td class="token-name">--text-muted</td><td class="token-value">#888888</td><td class="token-value">#888888</td><td><span class="token-cat cat-semantic">Text</span></td></tr>
+          <tr><td class="token-name">--text-faint</td><td class="token-value">#C8C8C8</td><td class="token-value">#555555</td><td><span class="token-cat cat-semantic">Text</span></td></tr>
+          <tr><td class="token-name">--border-subtle</td><td class="token-value">purple/8%</td><td class="token-value">white/6%</td><td><span class="token-cat cat-semantic">Border</span></td></tr>
+          <tr><td class="token-name">--border-default</td><td class="token-value">purple/20%</td><td class="token-value">lime/18%</td><td><span class="token-cat cat-semantic">Border</span></td></tr>
+          <tr><td class="token-name">--brand-primary</td><td class="token-value">#5B4FF0</td><td class="token-value">#C2E53A ⚡</td><td><span class="token-cat cat-semantic">Brand</span></td></tr>
+          <tr><td class="token-name">--brand-primary-hover</td><td class="token-value">#3B30C0</td><td class="token-value">#D9EE79</td><td><span class="token-cat cat-semantic">Brand</span></td></tr>
+          <tr><td class="token-name">--brand-primary-soft</td><td class="token-value">#EAE8FD</td><td class="token-value">lime/12%</td><td><span class="token-cat cat-semantic">Brand</span></td></tr>
+          <tr><td class="token-name">--brand-accent</td><td class="token-value">#C2E53A</td><td class="token-value">#9B91F5</td><td><span class="token-cat cat-semantic">Brand</span></td></tr>
+          <tr><td class="token-name">--brand-accent-hover</td><td class="token-value">#9AB82A</td><td class="token-value">#5B4FF0</td><td><span class="token-cat cat-semantic">Brand</span></td></tr>
+          <tr><td class="token-name">--focus-ring</td><td class="token-value">purple/25%</td><td class="token-value">lime/35%</td><td><span class="token-cat cat-semantic">Focus</span></td></tr>
+          <tr><td class="token-name">--shadow-md</td><td class="token-value">black/12%</td><td class="token-value">black/50%</td><td><span class="token-cat cat-semantic">Shadow</span></td></tr>
+          <tr><td class="token-name">--shadow-brand</td><td class="token-value">purple glow</td><td class="token-value">lime glow ⚡</td><td><span class="token-cat cat-semantic">Shadow</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer class="guide-footer">
+  <div class="page-wrapper">
+    <div class="guide-footer-inner">
+      <div>
+        <div class="footer-logo">QUANT<span>IA</span></div>
+        <div class="footer-tagline">Ingeniería y Consultoría</div>
+      </div>
+      <div class="footer-version">Brand Style Guide v2.0 · Light & Dark · 2026</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════════════
+     SCRIPT — Theme switcher
+════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  const root = document.documentElement;
+  const btnLight = document.getElementById('btn-light');
+  const btnDark  = document.getElementById('btn-dark');
+
+  function setTheme(mode) {
+    if (mode === 'dark') {
+      root.classList.add('dark');
+      btnDark.classList.add('active');
+      btnLight.classList.remove('active');
+      btnDark.setAttribute('aria-pressed', 'true');
+      btnLight.setAttribute('aria-pressed', 'false');
+    } else {
+      root.classList.remove('dark');
+      btnLight.classList.add('active');
+      btnDark.classList.remove('active');
+      btnLight.setAttribute('aria-pressed', 'true');
+      btnDark.setAttribute('aria-pressed', 'false');
+    }
+  }
+
+  // Detección automática inicial: respeta la preferencia del sistema operativo
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setTheme(prefersDark ? 'dark' : 'light');
+
+  btnLight.addEventListener('click', () => setTheme('light'));
+  btnDark.addEventListener('click', () => setTheme('dark'));
+
+  // Reaccionar a cambios del sistema en vivo
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      setTheme(e.matches ? 'dark' : 'light');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

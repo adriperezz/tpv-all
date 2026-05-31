@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+
+# Backups de base de datos (contienen datos sensibles)
+*.sql
+
+# El .env lo gestiona cada máquina por separado
+.env

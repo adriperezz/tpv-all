@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════════════
+   Corpus Nazarí Design System
+   Feria del Corpus Granada 2026 — Patio Nazarí
+   Tailwind v4 · Rubik · Navy Blue & Cream
+   ══════════════════════════════════════════════════════ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── 1. STATIC TOKENS (build-time) ─────────────────── */
+@theme {
+  --font-sans:    "Rubik", sans-serif;
+  --font-display: "Rubik", sans-serif;
+  --font-mono:    ui-monospace, "JetBrains Mono", monospace;
+
+  --font-weight-light:    300;
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+
+  --spacing: 0.25rem;
+
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  --duration-fast:  150ms;
+  --duration-base:  220ms;
+  --duration-theme: 300ms;
+  --ease-standard:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── 2. RAW PALETTE + DYNAMIC SCALE ────────────────── */
+:root {
+  /* Gray scale → LIGHT mode (cream → navy) */
+  --g-50:  #070D28;   --g-100: #0C1438;
+  --g-200: #132050;   --g-300: #1E3080;
+  --g-400: #2547CC;   --g-500: #4A67B4;
+  --g-600: #8899BB;   --g-700: #C8C0A8;
+  --g-750: #D8D0B8;   --g-800: #EDE5CC;
+  --g-900: #FDFAF5;   --g-950: #F5EFE0;
+
+  /* Amber → Corpus brand — LIGHT mode (royal blue) */
+  --a-300: #4060A0;   --a-400: #1E3080;   --a-500: #2547CC;
+
+  /* White text → dark navy in light mode */
+  --color-white: #0C1438;
+
+  /* Named */
+  --c-navy-600: #2547CC;
+  --c-blue:     #2F6BFF;
+  --c-cream:    #EDE5CC;
+}
+
+/* ─── 3a. SEMANTIC TOKENS — LIGHT (crema + naval) ─── */
+:root {
+  --bg-page:     #F5EFE0;
+  --bg-surface:  #FFFFFF;
+  --bg-subtle:   #EDE5CC;
+  --bg-elevated: #FFFFFF;
+  --bg-inverse:  #070D28;
+
+  --text-primary:    #070D28;
+  --text-secondary:  #1E3080;
+  --text-muted:      #2547CC;
+  --text-faint:      #7090D8;
+  --text-on-brand:   #FFFFFF;
+  --text-on-accent:  #FFFFFF;
+  --text-on-inverse: #FFFFFF;
+
+  --border-subtle:  rgba(37, 71, 204, 0.10);
+  --border-default: rgba(37, 71, 204, 0.22);
+  --border-strong:  #2547CC;
+
+  --brand-primary:        #2547CC;
+  --brand-primary-hover:  #1E3080;
+  --brand-primary-active: #070D28;
+  --brand-primary-soft:   rgba(37, 71, 204, 0.10);
+
+  --brand-accent:        #2F6BFF;
+  --brand-accent-hover:  #4D88FF;
+  --brand-accent-soft:   rgba(47, 107, 255, 0.12);
+
+  --focus-ring: rgba(37, 71, 204, 0.28);
+
+  --shadow-sm:    0 1px 3px rgba(7, 13, 40, 0.08);
+  --shadow-md:    0 4px 12px rgba(7, 13, 40, 0.14);
+  --shadow-lg:    0 12px 32px rgba(7, 13, 40, 0.20);
+  --shadow-brand: 0 8px 24px rgba(37, 71, 204, 0.30);
+
+  --success-fg: #15803D; --success-bg: #DCFCE7; --success-border: #86EFAC;
+  --warning-fg: #B45309; --warning-bg: #FEF3C7; --warning-border: #FCD34D;
+  --danger-fg:  #B91C1C; --danger-bg:  #FEE2E2; --danger-border:  #FCA5A5;
+  --info-fg:    #1D4ED8; --info-bg:    #DBEAFE; --info-border:    #93C5FD;
+}
+
+/* ─── 3b. SEMANTIC TOKENS — DARK (deep navy) ────── */
+.dark {
+  /* Gray scale → DARK mode (navy → cream) */
+  --g-950: #070D28;   --g-900: #0C1438;
+  --g-800: #132050;   --g-750: #182868;
+  --g-700: #1E3080;   --g-600: #2B42A8;
+  --g-500: #4060C0;   --g-400: #7090D8;
+  --g-300: #A0B8F0;   --g-200: #C8D8F8;
+  --g-100: #E4ECFD;   --g-50:  #F2F6FF;
+
+  /* Amber → Corpus brand — DARK mode (azure) */
+  --a-300: #96B4FF;   --a-400: #6090FF;   --a-500: #2F6BFF;
+
+  /* White text → stays white in dark mode */
+  --color-white: #FFFFFF;
+
+  /* Named */
+  --c-navy-600: #2547CC;
+  --c-blue:     #2F6BFF;
+  --c-cream:    #EDE5CC;
+  --bg-page:     #070D28;
+  --bg-surface:  #0C1438;
+  --bg-subtle:   #132050;
+  --bg-elevated: #182868;
+  --bg-inverse:  #FFFFFF;
+
+  --text-primary:    #EDF0FF;
+  --text-secondary:  #A0B8F0;
+  --text-muted:      #7090D8;
+  --text-faint:      #3A52A0;
+  --text-on-brand:   #FFFFFF;
+  --text-on-accent:  #FFFFFF;
+  --text-on-inverse: #070D28;
+
+  --border-subtle:  rgba(160, 184, 240, 0.08);
+  --border-default: rgba(47, 107, 255, 0.22);
+  --border-strong:  #2F6BFF;
+
+  --brand-primary:        #2F6BFF;
+  --brand-primary-hover:  #6090FF;
+  --brand-primary-active: #4D88FF;
+  --brand-primary-soft:   rgba(47, 107, 255, 0.15);
+
+  --brand-accent:        #6090FF;
+  --brand-accent-hover:  #2F6BFF;
+  --brand-accent-soft:   rgba(96, 144, 255, 0.15);
+
+  --focus-ring: rgba(47, 107, 255, 0.38);
+
+  --shadow-sm:    0 1px 2px rgba(0, 0, 0, 0.50);
+  --shadow-md:    0 4px 12px rgba(0, 0, 0, 0.60);
+  --shadow-lg:    0 12px 32px rgba(0, 0, 0, 0.70);
+  --shadow-brand: 0 8px 24px rgba(47, 107, 255, 0.28);
+
+  --success-fg: #86EFAC; --success-bg: rgba(34,197,94,0.12);  --success-border: rgba(34,197,94,0.30);
+  --warning-fg: #FCD34D; --warning-bg: rgba(245,158,11,0.12); --warning-border: rgba(245,158,11,0.30);
+  --danger-fg:  #FCA5A5; --danger-bg:  rgba(239,68,68,0.12);  --danger-border:  rgba(239,68,68,0.30);
+  --info-fg:    #93C5FD; --info-bg:    rgba(59,130,246,0.12); --info-border:    rgba(59,130,246,0.30);
+}
+
+/* ─── 4. TAILWIND BRIDGE (dynamic via CSS vars) ─────── */
+@theme inline {
+  /* Gray scale — responde a .dark toggle */
+  --color-gray-50:  var(--g-50);
+  --color-gray-100: var(--g-100);
+  --color-gray-200: var(--g-200);
+  --color-gray-300: var(--g-300);
+  --color-gray-400: var(--g-400);
+  --color-gray-500: var(--g-500);
+  --color-gray-600: var(--g-600);
+  --color-gray-700: var(--g-700);
+  --color-gray-750: var(--g-750);
+  --color-gray-800: var(--g-800);
+  --color-gray-900: var(--g-900);
+  --color-gray-950: var(--g-950);
+
+  /* Amber → Corpus brand — responde a .dark toggle */
+  --color-amber-300: var(--a-300);
+  --color-amber-400: var(--a-400);
+  --color-amber-500: var(--a-500);
+
+  /* White — oscuro en light, blanco en dark */
+  --color-white: var(--color-white);
+
+  /* Semantic tokens */
+  --color-surface:       var(--bg-surface);
+  --color-page:          var(--bg-page);
+  --color-brand:         var(--brand-primary);
+  --color-brand-soft:    var(--brand-primary-soft);
+  --color-accent:        var(--brand-accent);
+
+  --color-success-fg:    var(--success-fg);
+  --color-success-bg:    var(--success-bg);
+  --color-warning-fg:    var(--warning-fg);
+  --color-warning-bg:    var(--warning-bg);
+  --color-danger-fg:     var(--danger-fg);
+  --color-danger-bg:     var(--danger-bg);
+  --color-info-fg:       var(--info-fg);
+  --color-info-bg:       var(--info-bg);
+}
+
+/* ─── 5. BASE STYLES ────────────────────────────────── */
+@layer base {
+  html {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    transition: background-color var(--duration-theme) var(--ease-standard),
+                color var(--duration-theme) var(--ease-standard);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    font-family: "Rubik", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--focus-ring);
+    border-radius: 4px;
+  }
+  * {
+    transition-property: background-color, border-color, color;
+    transition-duration: var(--duration-theme);
+    transition-timing-function: var(--ease-standard);
+  }
+  button { cursor: pointer; }
+}

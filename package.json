@@ -1,0 +1,11 @@
+{
+  "name": "tpv-nazari",
+  "private": true,
+  "scripts": {
+    "dev":  "concurrently -n back,front -c cyan,magenta \"pnpm --prefix backend start:dev\" \"pnpm --prefix frontend dev\"",
+    "full": "concurrently -n back,front -c cyan,magenta \"pnpm --prefix backend full\" \"pnpm --prefix frontend full\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
