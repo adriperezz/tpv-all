@@ -34,6 +34,15 @@ interface Periodo {
   cerradoPor: string | null;
   totalGeneral: number | null;
   totalVentas: number | null;
+  totalEfectivo: number | null;
+  totalTarjeta: number | null;
+  totalTransferencia: number | null;
+  realEfectivo: number | null;
+  realTarjeta: number | null;
+  realTransferencia: number | null;
+  descuadreEfectivo: number | null;
+  descuadreTarjeta: number | null;
+  descuadreTransferencia: number | null;
 }
 
 interface Resumen {
@@ -73,6 +82,12 @@ interface Venta {
   usuario: { id: number; nombre: string };
   logAcciones: { usuario: { nombre: string } }[];
 }
+
+const TAQUILLA_COLORS: Record<number, string> = {
+  1: 'bg-blue-900/50 text-blue-300',
+  2: 'bg-amber-900/50 text-amber-300',
+  3: 'bg-teal-900/50 text-teal-300',
+};
 
 export default function DashboardPage() {
   const navigate = useNavigate();
@@ -296,6 +311,11 @@ export default function DashboardPage() {
                     {esAbierta && (
                       <Circle size={8} className={sel ? 'text-green-400 fill-green-400' : 'text-gray-600 fill-gray-600'} />
                     )}
+                    {!esAbierta && p.taquilla != null && (
+                      <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${sel ? 'bg-white/20 text-white' : TAQUILLA_COLORS[p.taquilla] ?? 'bg-gray-700 text-gray-300'}`}>
+                        T{p.taquilla}
+                      </span>
+                    )}
                     <span>{p.label}</span>
                     {esAbierta && <span className="text-xs opacity-60">En curso</span>}
                     {!esAbierta && p.cerradoEn && (
@@ -303,9 +323,12 @@ export default function DashboardPage() {
                         {new Date(p.cerradoEn).toLocaleString('es-ES', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}
                       </span>
                     )}
-                    {!esAbierta && p.totalGeneral != null && (
-                      <span className={`text-xs font-bold ${sel ? 'text-white' : 'text-gray-300'}`}>{p.totalGeneral.toFixed(0)} €</span>
-                    )}
+                    {!esAbierta && p.totalGeneral != null && (() => {
+                      const total = p.realEfectivo !== null
+                        ? (p.realEfectivo ?? 0) + (p.realTarjeta ?? 0) + (p.realTransferencia ?? 0)
+                        : p.totalGeneral;
+                      return <span className={`text-xs font-bold ${sel ? 'text-white' : 'text-gray-300'}`}>{total.toFixed(2)} €</span>;
+                    })()}
                   </button>
                 );
               })}
@@ -330,14 +353,24 @@ export default function DashboardPage() {
               <p className="text-gray-600 text-center py-12">Selecciona al menos un período para ver el resumen</p>
             )}
             {loadingResumen && <p className="text-gray-600 text-center py-12">Cargando…</p>}
-            {!loadingResumen && resumen && seleccion.size > 0 && (
+            {!loadingResumen && resumen && seleccion.size > 0 && (() => {
+              const periodosSel = periodos.filter(p => seleccion.has(p.id) && p.id !== 'abierta');
+              const tieneReales = periodosSel.length > 0 && periodosSel.every(p => p.realEfectivo !== null);
+              const realEf = tieneReales ? periodosSel.reduce((s, p) => s + (p.realEfectivo ?? 0), 0) : null;
+              const realTar = tieneReales ? periodosSel.reduce((s, p) => s + (p.realTarjeta ?? 0), 0) : null;
+              const realTrans = tieneReales ? periodosSel.reduce((s, p) => s + (p.realTransferencia ?? 0), 0) : null;
+              const realTotal = realEf !== null && realTar !== null && realTrans !== null ? realEf + realTar + realTrans : null;
+              return (
               <div className="flex flex-col gap-4">
-                <p className="text-xs text-gray-500">{labelRango()}</p>
+                <div className="flex items-center justify-between">
+                  <p className="text-xs text-gray-500">{labelRango()}</p>
+                  {tieneReales && <span className="text-xs bg-green-900/40 text-green-400 px-2 py-0.5 rounded-full">Valores reales</span>}
+                </div>
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  <KPI label="Total" value={`${resumen.totalGeneral.toFixed(2)} €`} accent />
-                  <KPI label="Efectivo" value={`${resumen.totalEfectivo.toFixed(2)} €`} />
-                  <KPI label="Tarjeta" value={`${resumen.totalTarjeta.toFixed(2)} €`} />
-                  <KPI label="Transfer." value={`${resumen.totalTransferencia.toFixed(2)} €`} />
+                  <KPI label="Total" value={`${(realTotal ?? resumen.totalGeneral).toFixed(2)} €`} accent />
+                  <KPI label="Efectivo" value={`${(realEf ?? resumen.totalEfectivo).toFixed(2)} €`} />
+                  <KPI label="Tarjeta" value={`${(realTar ?? resumen.totalTarjeta).toFixed(2)} €`} />
+                  <KPI label="Transfer." value={`${(realTrans ?? resumen.totalTransferencia).toFixed(2)} €`} />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <KPI label="Ventas activas" value={String(resumen.totalVentasActivas)} />
@@ -376,7 +409,8 @@ export default function DashboardPage() {
                   </div>
                 )}
               </div>
-            )}
+              );
+            })()}
           </>
         )}
 

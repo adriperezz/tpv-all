@@ -4,5 +4,6 @@ node_modules
 # Backups de base de datos (contienen datos sensibles)
 *.sql
 
-# El .env lo gestiona cada máquina por separado
+# Los .env los gestiona cada máquina por separado
 .env
+frontend/.env.production

@@ -27,12 +27,19 @@ export class SesionesCajaService {
   }
 
   async parteX(taquilla: number) {
-    const desde = await this.ultimoCierre(taquilla);
+    const abierta = await this.prisma.sesionCaja.findFirst({
+      where: { taquilla, cierre: null },
+    });
+    const desde = abierta?.apertura ?? await this.ultimoCierre(taquilla);
     return this.buildResumen(desde, new Date(), taquilla);
   }
 
   async cerrar(taquilla: number, dto: CerrarSesionDto, usuarioId: number) {
-    const desde = await this.ultimoCierre(taquilla);
+    const abierta = await this.prisma.sesionCaja.findFirst({
+      where: { taquilla, cierre: null },
+    });
+
+    const desde = abierta?.apertura ?? await this.ultimoCierre(taquilla);
     const resumen = await this.buildResumen(desde, new Date(), taquilla);
 
     const { realEfectivo = null, realTarjeta = null, realTransferencia = null } = dto;
@@ -51,14 +58,15 @@ export class SesionesCajaService {
       cerradoPor: usuarioId,
     };
 
+    if (abierta) {
+      return this.prisma.sesionCaja.update({
+        where: { id: abierta.id },
+        data: { cierre: new Date(), snapshot },
+      });
+    }
+
     return this.prisma.sesionCaja.create({
-      data: {
-        taquilla,
-        usuarioId,
-        apertura: desde,
-        cierre: new Date(),
-        snapshot,
-      },
+      data: { taquilla, usuarioId, apertura: desde, cierre: new Date(), snapshot },
     });
   }
 
@@ -146,6 +154,15 @@ export class SesionesCajaService {
           cerradoPor: c.usuario.nombre,
           totalGeneral: (snap?.totalGeneral as number) ?? null,
           totalVentas: (snap?.totalVentas as number) ?? null,
+          totalEfectivo: (snap?.totalEfectivo as number) ?? null,
+          totalTarjeta: (snap?.totalTarjeta as number) ?? null,
+          totalTransferencia: (snap?.totalTransferencia as number) ?? null,
+          realEfectivo: (snap?.realEfectivo as number | null) ?? null,
+          realTarjeta: (snap?.realTarjeta as number | null) ?? null,
+          realTransferencia: (snap?.realTransferencia as number | null) ?? null,
+          descuadreEfectivo: (snap?.descuadreEfectivo as number | null) ?? null,
+          descuadreTarjeta: (snap?.descuadreTarjeta as number | null) ?? null,
+          descuadreTransferencia: (snap?.descuadreTransferencia as number | null) ?? null,
         };
       }),
     ];
