@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Get-Item \"C:\\\\Users\\\\enriq\\\\Downloads\\\\tpv_windows.sql\"\\).Length / 1KB)",
+      "PowerShell(Get-Process -Name \"psql\" -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Name \"psql\" -Force)",
+      "PowerShell($env:PGPASSWORD = \"postgres\"; & \"C:\\\\Program Files\\\\PostgreSQL\\\\16\\\\bin\\\\psql.exe\" -U postgres -d tpv -f \"C:\\\\Users\\\\enriq\\\\Downloads\\\\tpv_windows.sql\")",
+      "PowerShell(Stop-Process -Id \\(Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue\\).OwningProcess -Force -ErrorAction SilentlyContinue; Stop-Process -Id \\(Get-NetTCPConnection -LocalPort 8080 -ErrorAction SilentlyContinue\\).OwningProcess -Force -ErrorAction SilentlyContinue; Write-Host \"Procesos terminados\")",
+      "PowerShell($env:PGPASSWORD = \"postgres\"; & \"C:\\\\Program Files\\\\PostgreSQL\\\\16\\\\bin\\\\psql.exe\" -U postgres -d tpv -c \"SELECT id, taquilla, apertura, cierre, snapshot::text FROM public.\\\\\"SesionCaja\\\\\" ORDER BY apertura DESC LIMIT 10;\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\enriq\\\\Documents\\\\tpv_nazari\\\\tpv-all\\\\frontend\" -Recurse -Filter \"*cierre*\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -First 20)"
+    ]
+  }
+}
