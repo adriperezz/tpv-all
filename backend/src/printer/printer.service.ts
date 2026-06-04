@@ -120,8 +120,8 @@ export class PrinterService implements OnModuleInit {
         err ? reject(err) : resolve();
       };
 
-      // Fase 1: timeout corto para detectar impresoras no alcanzables
-      socket.setTimeout(8_000);
+      // Fase 1: timeout de conexión — generoso para WiFi congestionado
+      socket.setTimeout(20_000);
 
       socket.connect(port, ip, () => {
         socket.write(data, (err) => {
@@ -153,7 +153,7 @@ export class PrinterService implements OnModuleInit {
     // El corte ESC/POS embebido en cada buffer hace que la impresora
     // los separe sola sin pausas artificiales → máxima velocidad.
     const payload = Buffer.concat(tickets);
-    const MAX_REINTENTOS = 3;
+    const MAX_REINTENTOS = 5;
 
     for (let intento = 1; intento <= MAX_REINTENTOS; intento++) {
       try {
@@ -162,7 +162,7 @@ export class PrinterService implements OnModuleInit {
         return;
       } catch (err: any) {
         if (intento < MAX_REINTENTOS) {
-          const espera = err.message.includes('ECONNRESET') ? 1_000 : 3_000;
+          const espera = err.message.includes('ECONNRESET') ? 2_000 : 5_000;
           this.logger.warn(`Impresora ${ip} fallida (intento ${intento}/${MAX_REINTENTOS}): ${err.message} — reintentando en ${espera / 1000}s`);
           await new Promise(r => setTimeout(r, espera));
         } else {
