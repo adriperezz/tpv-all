@@ -149,26 +149,27 @@ export class PrinterService implements OnModuleInit {
   }
 
   private async imprimirTickets(ip: string, tickets: Buffer[], port = 9100): Promise<void> {
-    // Todos los tickets concatenados en UNA conexión TCP.
-    // El corte ESC/POS embebido en cada buffer hace que la impresora
-    // los separe sola sin pausas artificiales → máxima velocidad.
-    const payload = Buffer.concat(tickets);
     const MAX_REINTENTOS = 5;
 
-    for (let intento = 1; intento <= MAX_REINTENTOS; intento++) {
-      try {
-        await this.conectar(ip, port, payload);
-        this.logger.log(`${tickets.length} ticket(s) enviados → ${ip}:${port} (${payload.length} bytes)`);
-        return;
-      } catch (err: any) {
-        if (intento < MAX_REINTENTOS) {
-          const espera = err.message.includes('ECONNRESET') ? 2_000 : 5_000;
-          this.logger.warn(`Impresora ${ip} fallida (intento ${intento}/${MAX_REINTENTOS}): ${err.message} — reintentando en ${espera / 1000}s`);
-          await new Promise(r => setTimeout(r, espera));
-        } else {
-          this.logger.error(`Impresora ${ip} abandonada tras ${MAX_REINTENTOS} intentos: ${err.message}`);
+    for (let i = 0; i < tickets.length; i++) {
+      let enviado = false;
+      for (let intento = 1; intento <= MAX_REINTENTOS; intento++) {
+        try {
+          await this.conectar(ip, port, tickets[i]);
+          this.logger.log(`Ticket ${i + 1}/${tickets.length} enviado → ${ip}:${port} (${tickets[i].length} bytes)`);
+          enviado = true;
+          break;
+        } catch (err: any) {
+          if (intento < MAX_REINTENTOS) {
+            const espera = err.message.includes('ECONNRESET') ? 2_000 : 5_000;
+            this.logger.warn(`Ticket ${i + 1}/${tickets.length} fallido (intento ${intento}/${MAX_REINTENTOS}): ${err.message} — reintentando en ${espera / 1000}s`);
+            await new Promise(r => setTimeout(r, espera));
+          } else {
+            this.logger.error(`Ticket ${i + 1}/${tickets.length} abandonado tras ${MAX_REINTENTOS} intentos: ${err.message}`);
+          }
         }
       }
+      if (enviado && i < tickets.length - 1) await new Promise(r => setTimeout(r, 300));
     }
   }
 
